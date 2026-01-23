@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thí nghiệm ảo - Vật lý 8</title>
+  <title>Thí nghiệm ảo: Đo hiệu điện thế và cường độ dòng điện – Vật lý 8</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -43,7 +43,7 @@
       bottom: 70px;
       right: 20px;
       width: 360px;
-      height: 420px;
+      height: 480px;
       background: white;
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.25);
@@ -99,6 +99,7 @@
       src="https://phet.colorado.edu/sims/html/circuit-construction-kit-dc-virtual-lab/latest/circuit-construction-kit-dc-virtual-lab_vi.html"
       allowfullscreen>
     </iframe>
+    <p><em>Thí nghiệm ảo từ PhET Interactive Simulations, University of Colorado Boulder.</em></p>
   </div>
 
   <!-- Nút bật chatbot -->
@@ -108,11 +109,12 @@
   <div id="chatbot">
     <div id="chat-header" onclick="toggleChat()">Trợ giảng ảo – Vật lý 8</div>
     <div id="chat-body">
-      <p><strong>AI:</strong> Chào em! Em có thể hỏi về:<br>
-        • Cách mắc ampe kế, vôn kế<br>
-        • Đặc điểm mạch nối tiếp/song song<br>
-        • Giải thích hiện tượng đèn sáng/tắt<br>
-        • Ý nghĩa của hiệu điện thế, dòng điện…<br>
+      <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
+        • “Ampe kế và vôn kế mắc thế nào?”<br>
+        • “Cầu chì có tác dụng gì?”<br>
+        • “Tại sao đèn sáng/mờ/tắt?”<br>
+        • “Làm sao để đo U giữa hai đầu điện trở?”<br>
+        • “Chiều dòng điện quy ước là gì?”<br>
         Hãy đặt câu hỏi nhé!</p>
     </div>
     <div id="chat-input">
@@ -122,7 +124,6 @@
   </div>
 
   <script>
-    // Bật/tắt chatbot
     function toggleChat() {
       const chat = document.getElementById("chatbot");
       if (chat.style.display === "flex") {
@@ -132,7 +133,6 @@
       }
     }
 
-    // Xử lý khi gửi câu hỏi
     function sendQuestion() {
       const input = document.getElementById("user-input");
       const question = input.value.trim();
@@ -141,58 +141,113 @@
       const chatBody = document.getElementById("chat-body");
       chatBody.innerHTML += `<p><strong>Em:</strong> ${question}</p>`;
       
-      // Chuyển câu hỏi về chữ thường để so sánh dễ hơn
-const q = question.toLowerCase();
+      const q = question.toLowerCase();
+      let reply = "Câu hỏi rất hay! Em hãy mô tả rõ hơn hiện tượng em đang quan sát trong thí nghiệm nhé.";
 
-let reply = "Câu hỏi rất hay! Em hãy thử mô tả rõ hơn hiện tượng em đang quan sát trong thí nghiệm nhé.";
+      // === PHẦN TRẢ LỜI CHUYÊN MÔN ===
 
-if (q.includes("mục đích")) {
-  reply = "Mục đích thí nghiệm này là giúp em hiểu cách đo hiệu điện thế (U) và cường độ dòng điện (I), từ đó rút ra mối quan hệ giữa U, I và điện trở R trong đoạn mạch — nền tảng của định luật Ôm (Vật lý 9).";
-} 
-else if (q.includes("lý thuyết") || q.includes("cơ sở")) {
-  reply = "Cơ sở lý thuyết gồm: định luật Ôm (I = U/R), đặc điểm mạch nối tiếp (I = I₁ = I₂; U = U₁ + U₂) và mạch song song (U = U₁ = U₂; I = I₁ + I₂) — theo chương trình Vật lý 8–9.";
-} 
-else if (q.includes("ampe kế") || q.includes("cường độ dòng điện")) {
-  reply = "Ampe kế đo cường độ dòng điện. Em phải mắc nó **nối tiếp** vào mạch. Lưu ý: chọn thang đo phù hợp và mắc đúng chiều (+) → (–) để kim không quay ngược!";
-}
-else if (q.includes("cường độ dòng điện") && q.includes("là gì")) {
-  reply = "Cường độ dòng điện (ký hiệu I, đơn vị ampe - A) cho biết mức độ mạnh yếu của dòng điện. Dòng điện càng mạnh thì cường độ càng lớn. Ampe kế dùng để đo đại lượng này.";
-}
-else if ((q.includes("song song") || q.includes("nối tiếp")) && q.includes("cường độ") && (q.includes("bóng") || q.includes("đèn"))) {
-  reply = "Có khác nhau!<br>• Mạch <strong>nối tiếp</strong>: cường độ dòng điện qua hai bóng <strong>bằng nhau</strong>.<br>• Mạch <strong>song song</strong>: cường độ dòng điện qua mỗi bóng <strong>có thể khác nhau</strong> (tùy điện trở), nhưng tổng bằng dòng điện mạch chính.";
-}
-else if (q.includes("mắc mạch") || q.includes("lắp mạch") || q.includes("nối mạch") || q.includes("cách mắc")) {
-  reply = "Để mắc mạch điện cơ bản, em làm theo các bước:<br>" +
-          "1. <strong>Xác định thiết bị</strong>: pin (nguồn), bóng đèn, dây dẫn.<br>" +
-          "2. <strong>Tạo mạch kín</strong>: nối dây từ cực (+) pin → bóng đèn → cực (–) pin.<br>" +
-          "3. <strong>Thêm dụng cụ đo</strong>:<br>" +
-          "&nbsp;&nbsp;• Ampe kế: mắc <strong>nối tiếp</strong> với bóng đèn.<br>" +
-          "&nbsp;&nbsp;• Vôn kế: mắc <strong>song song</strong> với bóng đèn.<br>" +
-          "⚠️ Lưu ý: luôn kiểm tra mạch <strong>chưa kín</strong> khi lắp, xong mới đóng mạch để tránh chập!";
-} 
-else if (q.includes("vôn kế") || q.includes("hiệu điện thế")) {
-  reply = "Vôn kế đo hiệu điện thế. Em mắc nó **song song** với thiết bị cần đo (ví dụ: hai đầu bóng đèn). Nhớ kiểm tra thang đo trước khi ghi kết quả!";
-} 
-else if (q.includes("nối tiếp")) {
-  reply = "Trong mạch nối tiếp: <br>• Cường độ dòng điện: I = I₁ = I₂<br>• Hiệu điện thế: U = U₁ + U₂<br>→ Tổng hiệu điện thế bằng hiệu điện thế hai đầu nguồn.";
-} 
-else if (q.includes("song song")) {
-  reply = "Trong mạch song song:<br>• Hiệu điện thế: U = U₁ = U₂<br>• Cường độ dòng điện: I = I₁ + I₂<br>→ Dòng điện chia thành các nhánh.";
-} 
-else if (q.includes("đèn không sáng") || q.includes("bóng đèn") || q.includes("không sáng")) {
-  reply = "Em kiểm tra: <br>1. Mạch có kín không?<br>2. Pin còn đủ hiệu điện thế không?<br>3. Dây nối có đứt hoặc lỏng không?<br>4. Ampe kế/vôn kế có mắc sai vị trí không?";
-} 
-else if (q.includes("sai số")) {
-  reply = "Sai số có thể do: tiếp xúc kém ở dây nối, chọn thang đo quá lớn/nhỏ, hoặc kim đồng hồ chưa về vạch số 0. Em nên lặp lại 2–3 lần và lấy giá trị trung bình.";
-} 
-else if (q.includes("điện trở") || q.includes("r =")) {
-  reply = "Điện trở R đặc trưng cho mức cản trở dòng điện của vật dẫn. Với dây dẫn thuần trở, ta có định luật Ôm: I = U/R. Trong thí nghiệm này, em có thể tính R bằng cách đo U và I rồi dùng công thức R = U/I.";
-}
+      // Câu hỏi cơ bản
+      if (q.includes("mục đích")) {
+        reply = "Mục đích thí nghiệm này là giúp em hiểu cách đo hiệu điện thế (U) và cường độ dòng điện (I), từ đó rút ra mối quan hệ giữa U, I và điện trở R trong đoạn mạch — nền tảng của định luật Ôm (Vật lý 9).";
+      }
+      else if (q.includes("lý thuyết") || q.includes("cơ sở")) {
+        reply = "Cơ sở lý thuyết gồm: định luật Ôm (I = U/R), đặc điểm mạch nối tiếp (I = I₁ = I₂; U = U₁ + U₂) và mạch song song (U = U₁ = U₂; I = I₁ + I₂) — theo chương trình Vật lý 8–9.";
+      }
+      else if (q.includes("ampe kế") || q.includes("cường độ dòng điện")) {
+        reply = "Ampe kế đo cường độ dòng điện. Em phải mắc nó <strong>nối tiếp</strong> vào mạch. Lưu ý: chọn thang đo phù hợp và mắc đúng chiều (+) → (–) để kim không quay ngược!";
+      }
+      else if (q.includes("vôn kế") || q.includes("hiệu điện thế")) {
+        reply = "Vôn kế đo hiệu điện thế. Em mắc nó <strong>song song</strong> với thiết bị cần đo (ví dụ: hai đầu bóng đèn). Nhớ kiểm tra thang đo trước khi ghi kết quả!";
+      }
+      else if (q.includes("nối tiếp")) {
+        reply = "Trong mạch nối tiếp: <br>• Cường độ dòng điện: I = I₁ = I₂<br>• Hiệu điện thế: U = U₁ + U₂<br>→ Tổng hiệu điện thế bằng hiệu điện thế hai đầu nguồn.";
+      }
+      else if (q.includes("song song")) {
+        reply = "Trong mạch song song:<br>• Hiệu điện thế: U = U₁ = U₂<br>• Cường độ dòng điện: I = I₁ + I₂<br>→ Dòng điện chia thành các nhánh.";
+      }
+      else if (q.includes("đèn không sáng") || q.includes("bóng đèn") || q.includes("không sáng")) {
+        reply = "Em kiểm tra: <br>1. Mạch có kín không?<br>2. Pin còn đủ hiệu điện thế không?<br>3. Dây nối có đứt hoặc lỏng không?<br>4. Ampe kế/vôn kế có mắc sai vị trí không?";
+      }
+      else if (q.includes("sai số")) {
+        reply = "Sai số có thể do: tiếp xúc kém ở dây nối, chọn thang đo quá lớn/nhỏ, hoặc kim đồng hồ chưa về vạch số 0. Em nên lặp lại 2–3 lần và lấy giá trị trung bình.";
+      }
+      else if (q.includes("điện trở") || q.includes("r =")) {
+        reply = "Điện trở R đặc trưng cho mức cản trở dòng điện của vật dẫn. Với dây dẫn thuần trở, ta có định luật Ôm: I = U/R. Trong thí nghiệm này, em có thể tính R bằng cách đo U và I rồi dùng công thức R = U/I.";
+      }
 
-// Hiển thị phản hồi
-chatBody.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
-chatBody.scrollTop = chatBody.scrollHeight;
+      // Câu hỏi mở rộng từ học sinh tò mò
+      else if (q.includes("bắt đầu") || q.includes("bắt đầu từ đâu")) {
+        reply = "Em bắt đầu bằng cách:<br>" +
+                "1. Chọn thiết bị ở cột bên trái (pin, dây nối, bóng đèn...).<br>" +
+                "2. Kéo thiết bị vào vùng thí nghiệm.<br>" +
+                "3. Nối các thiết bị thành mạch kín.<br>" +
+                "→ Nhớ kiểm tra mạch chưa kín trước khi đóng mạch!";
+      }
+      else if (q.includes("pin") || q.includes("nguồn điện")) {
+        reply = "Pin là <strong>nguồn điện</strong> trong thí nghiệm này.<br>" +
+                "→ Nó cung cấp hiệu điện thế để dòng điện chạy trong mạch.<br>" +
+                "→ Em có thể đổi pin để xem ảnh hưởng đến độ sáng của đèn!";
+      }
+      else if (q.includes("dây nối") || q.includes("dấu + -")) {
+        reply = "Dây nối là <strong>phương tiện truyền dòng điện</strong>.<br>" +
+                "• Dấu + là cực dương, dấu - là cực âm.<br>" +
+                "• Dòng điện chạy từ cực + → cực - trong mạch ngoài.";
+      }
+      else if (q.includes("cầu chì") || q.includes("ngắt mạch")) {
+        reply = "Cầu chì là thiết bị <strong>bảo vệ mạch điện</strong>.<br>" +
+                "→ Nếu dòng điện quá lớn, cầu chì sẽ đứt → ngắt mạch để tránh cháy nổ.<br>" +
+                "→ Em có thể thử bỏ cầu chì ra để xem mạch có hoạt động không!";
+      }
+      else if (q.includes("đèn tròn") || q.includes("đèn sáng")) {
+        reply = "Đèn tròn là thiết bị <strong>tiêu thụ điện năng</strong>.<br>" +
+                "→ Nó sáng khi có dòng điện chạy qua.<br>" +
+                "→ Để đèn sáng hơn, em hãy tăng hiệu điện thế hoặc giảm điện trở!";
+      }
+      else if (q.includes("volt kế") || q.includes("ampe kế") || q.includes("mắc sai")) {
+        reply = "• Volt kế: mắc <strong>song song</strong> với thiết bị cần đo.<br>" +
+                "• Ampe kế: mắc <strong>nối tiếp</strong> với thiết bị cần đo.<br>" +
+                "→ Nếu mắc sai, đồng hồ có thể bị hỏng hoặc cho kết quả sai!";
+      }
+      else if (q.includes("hiển thị dòng điện") || q.includes("điện tử") || q.includes("quy ước")) {
+        reply = "• <strong>Điện tử</strong>: chiều dòng điện theo hướng di chuyển của electron (từ - → +).<br>" +
+                "• <strong>Quy ước</strong>: chiều dòng điện từ cực + → cực - (ngược chiều điện tử).<br>" +
+                "→ Trong SGK, ta dùng chiều quy ước để dễ hình dung!";
+      }
+      else if (q.includes("bỏ cầu chì") || q.includes("không có cầu chì")) {
+        reply = "Nếu bỏ cầu chì ra, mạch vẫn chạy — nhưng <strong>rất nguy hiểm</strong>!<br>" +
+                "→ Không có thiết bị bảo vệ → nếu dòng điện quá lớn, dây dẫn có thể nóng chảy, gây cháy nổ.<br>" +
+                "→ Luôn giữ cầu chì trong mạch khi thí nghiệm!";
+      }
+      else if (q.includes("thay pin") || q.includes("nguồn khác")) {
+        reply = "Em hoàn toàn có thể thay pin bằng nguồn điện khác!<br>" +
+                "• Ở góc dưới bên phải, chọn biểu tượng <strong>pin</strong> để đổi điện áp.<br>" +
+                "→ Điện áp cao hơn → dòng điện mạnh hơn → đèn sáng hơn!";
+      }
 
+      // So sánh & khái niệm
+      else if (q.includes("cường độ dòng điện") && q.includes("là gì")) {
+        reply = "Cường độ dòng điện (ký hiệu I, đơn vị ampe - A) cho biết mức độ mạnh yếu của dòng điện. Dòng điện càng mạnh thì cường độ càng lớn. Ampe kế dùng để đo đại lượng này.";
+      }
+      else if ((q.includes("song song") || q.includes("nối tiếp")) && q.includes("cường độ") && (q.includes("bóng") || q.includes("đèn"))) {
+        reply = "Có khác nhau!<br>• Mạch <strong>nối tiếp</strong>: cường độ dòng điện qua hai bóng <strong>bằng nhau</strong>.<br>• Mạch <strong>song song</strong>: cường độ dòng điện qua mỗi bóng <strong>có thể khác nhau</strong> (tùy điện trở), nhưng tổng bằng dòng điện mạch chính.";
+      }
+      else if (q.includes("mắc mạch") || q.includes("lắp mạch") || q.includes("nối mạch") || q.includes("cách mắc")) {
+        reply = "Để mắc mạch điện cơ bản, em làm theo các bước:<br>" +
+                "1. <strong>Xác định thiết bị</strong>: pin (nguồn), bóng đèn, dây dẫn.<br>" +
+                "2. <strong>Tạo mạch kín</strong>: nối dây từ cực (+) pin → bóng đèn → cực (–) pin.<br>" +
+                "3. <strong>Thêm dụng cụ đo</strong>:<br>" +
+                "&nbsp;&nbsp;• Ampe kế: mắc <strong>nối tiếp</strong> với bóng đèn.<br>" +
+                "&nbsp;&nbsp;• Vôn kế: mắc <strong>song song</strong> với bóng đèn.<br>" +
+                "⚠️ Lưu ý: luôn kiểm tra mạch <strong>chưa kín</strong> khi lắp, xong mới đóng mạch để tránh chập!";
+      }
+
+      // Câu trả lời mặc định
+      else {
+        reply = "Em hãy thử hỏi về: cách mắc ampe kế/vôn kế, vai trò của cầu chì, so sánh mạch nối tiếp/song song, hoặc tại sao đèn sáng/mờ nhé!";
+      }
+
+      chatBody.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
       input.value = "";
     }
   </script>
