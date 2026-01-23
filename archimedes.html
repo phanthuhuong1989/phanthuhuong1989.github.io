@@ -142,7 +142,7 @@
       chatBody.innerHTML += `<p><strong>Em:</strong> ${question}</p>`;
       
       const q = question.toLowerCase();
-      let reply = "Câu hỏi rất hay! Em hãy mô tả rõ hơn hiện tượng em đang quan sát trong thí nghiệm nhé.";
+      let reply = "";
 
       // === PHẦN TRẢ LỜI CHUYÊN MÔN ===
 
@@ -242,49 +242,40 @@
                 "→ Trong thí nghiệm, em thấy cả hai giá trị này!";
       }
 
-      // Câu trả lời mặc định
+      // === XỬ LÝ CÁC CÂU HỎI GỢI Ý TỪ PHẦN CHÀO MỪNG ===
+
+      else if (q.includes("lực đẩy archimedes là gì") || q.includes("lực đẩy ác si mét")) {
+        reply = "Lực đẩy Archimedes là lực do chất lỏng tác dụng lên vật nhúng vào nó, có phương thẳng đứng, chiều từ dưới lên. Độ lớn: F = d.V, với d là trọng lượng riêng của chất lỏng, V là thể tích phần vật chìm.";
+      }
+      else if (q.includes("vật màu xanh này là gì")) {
+        reply = "Vật màu xanh là <strong>vật cần thí nghiệm</strong>.<br>" +
+                "• Khối lượng: 13.50 kg<br>" +
+                "• Thể tích: 5.00 L<br>" +
+                "→ Em có thể thay đổi vật liệu để xem ảnh hưởng đến lực đẩy và điều kiện nổi/chìm.";
+      }
+      else if (q.includes("105.00 l") || q.includes("83.3 n") || q.includes("ý nghĩa")) {
+        reply = "• <strong>105.00 L</strong>: thể tích nước ban đầu.<br>" +
+                "• <strong>83.3 N</strong>: lực kéo khi vật đang nhúng.<br>" +
+                "• <strong>49.0 N</strong>: lực đẩy Archimedes.<br>" +
+                "→ Các số liệu này giúp em tính toán và hiểu bản chất lực đẩy.";
+      }
+      else if (q.includes("mũi tên màu đỏ") || q.includes("mũi tên màu xanh")) {
+        reply = "• <strong>Mũi tên đỏ</strong>: lực đẩy Archimedes (hướng lên).<br>" +
+                "• <strong>Mũi tên xanh</strong>: trọng lực (hướng xuống).<br>" +
+                "→ Chiều và độ dài mũi tên cho thấy hướng và độ lớn của lực.";
+      }
+      else if (q.includes("% chìm") || q.includes("làm sao để vật nổi")) {
+        reply = "Để vật nổi, em cần chọn vật liệu có <strong>mật độ nhỏ hơn chất lỏng</strong> (ví dụ: gỗ trong nước).<br>" +
+                "<strong>% chìm</strong> cho biết bao nhiêu phần trăm vật bị ngập — nếu < 100%, vật nổi!";
+      }
+
+      // Câu trả lời cuối cùng nếu vẫn không khớp
       else {
-        // === XỬ LÝ CÁC CÂU HỎI GỢI Ý (KHI KHÔNG PHÙ HỢP VỚI TỪ KHÓA) ===
-
-else if (q.includes("vì sao") || q.includes("tại sao")) {
-  reply = "Em hãy đặt câu hỏi cụ thể hơn nhé! Ví dụ:<br>" +
-          "• Tại sao vật nổi trong nước?<br>" +
-          "• Vì sao lực đẩy tăng khi đổi sang dầu?<br>" +
-          "→ Chatbot sẽ giúp em giải thích từng bước!";
-}
-
-else if (q.includes("cách thay đổi") || q.includes("thay đổi chất lỏng")) {
-  reply = "Để thay đổi chất lỏng:<br>" +
-          "1. Nhấn vào biểu tượng <strong>cốc</strong> ở góc dưới phải.<br>" +
-          "2. Chọn chất lỏng mới (dầu, cát, rượu...).<br>" +
-          "→ Mỗi chất có trọng lượng riêng khác nhau → ảnh hưởng đến lực đẩy và % chìm.";
-}
-
-else if (q.includes("ý nghĩa") || q.includes("số liệu")) {
-  reply = "Các số liệu trong thí nghiệm có ý nghĩa như sau:<br>" +
-          "• 13.50 kg: khối lượng vật<br>" +
-          "• 5.00 L: thể tích vật<br>" +
-          "• 105.00 L: thể tích nước ban đầu<br>" +
-          "• 83.3 N & 49.0 N: lực kéo và lực đẩy Archimedes<br>" +
-          "→ Em hãy hỏi từng số liệu để hiểu rõ hơn!";
-}
-
-else if (q.includes("điều kiện vật nổi") || q.includes("vật nổi")) {
-  reply = "Vật nổi khi: P &lt; F<sub>A</sub> (trọng lực &lt; lực đẩy)<br>" +
-          "→ So sánh trọng lượng riêng: d<sub>vật</sub> &lt; d<sub>lỏng</sub> thì nổi.<br>" +
-          "→ Em có thể thử với vật liệu nhẹ hơn nước (như gỗ) để thấy sự khác biệt!";
-}
-
-else if (q.includes("lực đẩy archimedes") || q.includes("lực đẩy ác si mét")) {
-  reply = "Lực đẩy Archimedes là lực do chất lỏng tác dụng lên vật nhúng vào nó, có phương thẳng đứng, chiều từ dưới lên. Độ lớn: F = d.V, với d là trọng lượng riêng của chất lỏng, V là thể tích phần vật chìm.";
-}
-
-else {
-  reply = "Câu hỏi của em chưa khớp với nội dung hiện có. Em hãy thử hỏi lại bằng cách:<br>" +
-          "• Gõ từ khóa: 'lực đẩy', 'vật nổi', 'số liệu', 'thay đổi chất lỏng'<br>" +
-          "• Hoặc hỏi cụ thể hơn: 'Tại sao vật nổi trong nước?'<br>" +
-          "→ Chatbot sẽ hỗ trợ em chi tiết hơn!";
-}
+        reply = "Câu hỏi của em rất hay! Nhưng để chatbot hỗ trợ tốt hơn, em hãy hỏi cụ thể hơn, ví dụ:<br>" +
+                "• “Tại sao sắt chìm trong nước?”<br>" +
+                "• “Làm sao tính lực đẩy?”<br>" +
+                "• “Thay đổi chất lỏng như thế nào?”<br>" +
+                "→ Em cứ thử hỏi — trợ giảng luôn sẵn sàng!";
       }
 
       chatBody.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
