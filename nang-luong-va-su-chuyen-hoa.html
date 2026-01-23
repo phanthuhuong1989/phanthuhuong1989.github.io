@@ -110,10 +110,10 @@
     <div id="chat-header" onclick="toggleChat()">Trợ giảng ảo – Vật lý 8</div>
     <div id="chat-body">
       <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
-        • “Xe đạp, mặt trời, gió… là nguồn năng lượng gì?”<br>
+        • “Bắt đầu từ đâu? Làm sao tạo hệ thống chuyển hóa năng lượng?”<br>
+        • “Xe đạp, mặt trời, tuabin gió… cung cấp năng lượng gì?”<br>
         • “Biểu tượng E màu cam/xanh/vàng đại diện cho gì?”<br>
-        • “Tại sao khi bật đèn lại có cả ánh sáng và nhiệt?”<br>
-        • “Làm sao để tăng nhiệt độ nhanh hơn?”<br>
+        • “Làm sao để nước nóng lên nhanh hơn?”<br>
         • “Có thể thay nước bằng dầu hoặc cát không?”<br>
         Hãy đặt câu hỏi nhé!</p>
     </div>
@@ -142,7 +142,7 @@
       chatBody.innerHTML += `<p><strong>Em:</strong> ${question}</p>`;
       
       const q = question.toLowerCase();
-      let reply = "Câu hỏi rất hay! Em hãy mô tả rõ hơn hiện tượng em đang quan sát nhé.";
+      let reply = "";
 
       // === TRẢ LỜI CHUYÊN MÔN CHO THÍ NGHIỆM CHUYỂN HÓA NĂNG LƯỢNG ===
 
@@ -215,7 +215,7 @@
                 "• <strong>Cơ</strong>: từ xe đạp, tuabin gió<br>" +
                 "• <strong>Điện</strong>: từ máy phát điện<br>" +
                 "• <strong>Nhiệt</strong>: làm nóng nước, ấm trà<br>" +
-                "• <strong>Quang</strong>: ánh sáng từ bóng đèn, mặt trời<br>" +
+                "• <strong>Quang</strong>: ánh sáng từ mặt trời<br>" +
                 "• <strong>Hóa</strong>: năng lượng trong nhiên liệu (than, khí đốt)<br>" +
                 "→ Mỗi dạng có thể chuyển hóa sang dạng khác!";
       }
@@ -226,11 +226,6 @@
       else if (q.includes("tuabin gió") || q.includes("gió")) {
         reply = "Tuabin gió là thiết bị chuyển hóa **năng lượng cơ học của gió → điện năng**.<br>" +
                 "→ Em kéo tuabin vào vùng thí nghiệm → điều chỉnh tốc độ gió để xem ảnh hưởng đến nhiệt độ nước!";
-      }
-      else if (q.includes("bóng đèn") || q.includes("đèn sáng")) {
-        reply = "Bóng đèn là thiết bị chuyển hóa **điện năng → quang năng + nhiệt năng**.<br>" +
-                "→ Khi bật, nó phát sáng (quang) và tỏa nhiệt (nhiệt).<br>" +
-                "→ Em có thể so sánh: đèn sợi đốt tỏa nhiệt nhiều hơn đèn LED!";
       }
       else {
         reply = "Em hãy thử hỏi về: các dạng năng lượng, biểu tượng E, cách chọn nguồn, hoặc so sánh tốc độ nóng lên nhé!";
