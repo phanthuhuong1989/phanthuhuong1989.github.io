@@ -110,11 +110,11 @@
     <div id="chat-header" onclick="toggleChat()">Trợ giảng ảo – Vật lý 8</div>
     <div id="chat-body">
       <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
-        • “Ampe kế và vôn kế mắc thế nào?”<br>
-        • “Cầu chì có tác dụng gì?”<br>
-        • “Tại sao đèn sáng/mờ/tắt?”<br>
-        • “Làm sao để đo U giữa hai đầu điện trở?”<br>
-        • “Chiều dòng điện quy ước là gì?”<br>
+        • “Bắt đầu từ đâu? Làm sao tạo mạch kín?”<br>
+        • “Pin, dây nối, cầu chì… dùng để làm gì?”<br>
+        • “Ampe kế và vôn kế mắc thế nào? Nếu mắc sai thì sao?”<br>
+        • “Tại sao khi tăng điện trở thì đèn mờ đi?”<br>
+        • “Có thể thay pin bằng nguồn khác không?”<br>
         Hãy đặt câu hỏi nhé!</p>
     </div>
     <div id="chat-input">
@@ -142,11 +142,10 @@
       chatBody.innerHTML += `<p><strong>Em:</strong> ${question}</p>`;
       
       const q = question.toLowerCase();
-      let reply = "Câu hỏi rất hay! Em hãy mô tả rõ hơn hiện tượng em đang quan sát trong thí nghiệm nhé.";
+      let reply = "";
 
-      // === PHẦN TRẢ LỜI CHUYÊN MÔN ===
+      // === TRẢ LỜI CHUYÊN MÔN ===
 
-      // Câu hỏi cơ bản
       if (q.includes("mục đích")) {
         reply = "Mục đích thí nghiệm này là giúp em hiểu cách đo hiệu điện thế (U) và cường độ dòng điện (I), từ đó rút ra mối quan hệ giữa U, I và điện trở R trong đoạn mạch — nền tảng của định luật Ôm (Vật lý 9).";
       }
