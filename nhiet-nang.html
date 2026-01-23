@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thí nghiệm ảo: Nhiệt năng – Vật lý 8</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 10px;
+      background: #f9f9f9;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .phet-frame {
+      width: 100%;
+      height: 650px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    /* Nút bật chatbot */
+    .chatbot-toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    /* Cửa sổ chatbot */
+    #chatbot {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      width: 360px;
+      height: 460px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+    #chat-header {
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border-radius: 12px 12px 0 0;
+      cursor: pointer;
+    }
+    #chat-body {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      font-size: 14px;
+      line-height: 1.5;
+      background: #fafafa;
+    }
+    #chat-input {
+      display: flex;
+      padding: 10px;
+      background: white;
+      border-top: 1px solid #eee;
+    }
+    #chat-input input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #chat-input button {
+      margin-left: 8px;
+      padding: 8px 14px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Thí nghiệm: Nhiệt năng và sự truyền nhiệt</h2>
+    <iframe 
+      class="phet-frame"
+      src="https://phet.colorado.edu/sims/html/energy-forms-and-changes/latest/energy-forms-and-changes_vi.html"
+      allowfullscreen>
+    </iframe>
+    <p><em>Thí nghiệm ảo từ PhET Interactive Simulations, University of Colorado Boulder.</em></p>
+  </div>
+
+  <!-- Nút bật chatbot -->
+  <button class="chatbot-toggle-btn" onclick="toggleChat()">💬 Hỏi trợ giảng AI</button>
+
+  <!-- Cửa sổ chatbot -->
+  <div id="chatbot">
+    <div id="chat-header" onclick="toggleChat()">Trợ giảng ảo – Vật lý 8</div>
+    <div id="chat-body">
+      <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
+        • “Làm sao chọn vật liệu (nước, sắt, gạch)?”<br>
+        • “Biểu tượng năng lượng di chuyển thế nào?”<br>
+        • “Vì sao sắt nóng nhanh hơn nước?”<br>
+        • “Biến số độc lập trong thí nghiệm là gì?”<br>
+        Hãy đặt câu hỏi nhé!</p>
+    </div>
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="Nhập câu hỏi..." onkeypress="if(event.key==='Enter') sendQuestion()" />
+      <button onclick="sendQuestion()">Gửi</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const chat = document.getElementById("chatbot");
+      if (chat.style.display === "flex") {
+        chat.style.display = "none";
+      } else {
+        chat.style.display = "flex";
+      }
+    }
+
+    function sendQuestion() {
+      const input = document.getElementById("user-input");
+      const question = input.value.trim();
+      if (!question) return;
+
+      const chatBody = document.getElementById("chat-body");
+      chatBody.innerHTML += `<p><strong>Em:</strong> ${question}</p>`;
+      
+      const q = question.toLowerCase();
+      let reply = "Câu hỏi rất hay! Em hãy mô tả rõ hơn hiện tượng em đang quan sát nhé.";
+
+      // === TRẢ LỜI CHUYÊN MÔN CHO THÍ NGHIỆM NHIỆT NĂNG ===
+
+      if (q.includes("chọn vật liệu") || q.includes("nước") || q.includes("sắt") || q.includes("gạch")) {
+        reply = "Em chọn vật liệu bằng cách:<br>" +
+                "1. Nhấn vào biểu tượng <strong>‘Blocks’</strong> hoặc <strong>‘Systems’</strong> ở góc trên.<br>" +
+                "2. Kéo vật liệu (nước, sắt, gạch...) vào vùng thí nghiệm.<br>" +
+                "→ Mỗi vật liệu có khả năng dẫn nhiệt khác nhau!";
+      }
+      else if (q.includes("nguồn nhiệt") || q.includes("làm nóng") || q.includes("làm lạnh")) {
+        reply = "Em điều chỉnh nguồn nhiệt/lạnh bằng cách:<br>" +
+                "• Kéo <strong>bếp điện</strong> (màu đỏ) để làm nóng.<br>" +
+                "• Kéo <strong>khối băng</strong> (màu xanh) để làm lạnh.<br>" +
+                "→ Quan sát biểu tượng năng lượng (mũi tên vàng) di chuyển từ nguồn → vật!";
+      }
+      else if (q.includes("biểu tượng năng lượng") || q.includes("mũi tên vàng")) {
+        reply = "Biểu tượng năng lượng là những <strong>mũi tên vàng</strong> di chuyển từ:<br>" +
+                "• Nguồn nhiệt → vật (khi làm nóng)<br>" +
+                "• Vật → môi trường (khi làm lạnh)<br>" +
+                "→ Số lượng mũi tên càng nhiều → tốc độ truyền nhiệt càng nhanh!";
+      }
+      else if (q.includes("reset") || q.includes("thiết lập lại")) {
+        reply = "Để reset thí nghiệm nhanh chóng:<br>" +
+                "• Nhấn nút <strong>‘Reset’</strong> (hình vòng tròn có mũi tên) ở góc dưới bên phải.<br>" +
+                "• Hoặc kéo vật liệu ra khỏi vùng thí nghiệm rồi thả lại.";
+      }
+      else if (q.includes("biến số độc lập")) {
+        reply = "Biến số độc lập (biến em thay đổi) là:<br>" +
+                "• Loại vật liệu (nước, sắt, gạch...)<br>" +
+                "• Nhiệt độ ban đầu<br>" +
+                "• Công suất nguồn nhiệt<br>" +
+                "→ Biến số phụ thuộc là: nhiệt độ cuối cùng, tốc độ tăng nhiệt.";
+      }
+      else if (q.includes("sắt") && (q.includes("nóng nhanh") || q.includes("nhanh hơn"))) {
+        reply = "Sắt nóng nhanh hơn nước vì:<br>" +
+                "• Sắt có <strong>nhiệt dung riêng nhỏ</strong> → cần ít năng lượng để tăng nhiệt độ.<br>" +
+                "• Nước có nhiệt dung riêng lớn → hấp thụ nhiều năng lượng nhưng nhiệt độ tăng chậm.<br>" +
+                "→ Đây là lý do người ta dùng nước làm chất tải nhiệt!";
+      }
+      else if (q.includes("cân bằng nhiệt") || q.includes("nhiệt truyền")) {
+        reply = "Năng lượng nhiệt truyền từ vật có <strong>nhiệt độ cao</strong> sang vật có <strong>nhiệt độ thấp</strong>.<br>" +
+                "→ Quá trình dừng lại khi hai vật có <strong>cùng nhiệt độ</strong> (cân bằng nhiệt).<br>" +
+                "→ Em hãy thử đặt sắt nóng cạnh nước lạnh để quan sát!";
+      }
+      else if (q.includes("nhiệt năng")) {
+        reply = "Nhiệt năng là tổng động năng của các phân tử trong vật.<br>" +
+                "• Khi nhiệt độ tăng → phân tử chuyển động nhanh hơn → nhiệt năng tăng.<br>" +
+                "• Cùng khối lượng, vật có nhiệt độ cao hơn thì có nhiệt năng lớn hơn.";
+      }
+      else {
+        reply = "Em hãy thử hỏi về: cách chọn vật liệu, biểu tượng năng lượng, so sánh sắt và nước, hoặc cân bằng nhiệt nhé!";
+      }
+
+      chatBody.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>
