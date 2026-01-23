@@ -190,7 +190,67 @@
         reply = "Nhiệt năng là tổng động năng của các phân tử trong vật.<br>" +
                 "• Khi nhiệt độ tăng → phân tử chuyển động nhanh hơn → nhiệt năng tăng.<br>" +
                 "• Cùng khối lượng, vật có nhiệt độ cao hơn thì có nhiệt năng lớn hơn.";
-      }
+      }// === CÂU HỎI TỪ HỌC SINH TÒ MÒ LẦN ĐẦU DÙNG THÍ NGHIỆM ===
+
+else if (q.includes("bắt đầu") || q.includes("bắt đầu từ đâu")) {
+  reply = "Em bắt đầu bằng cách:<br>" +
+          "1. Nhấn vào biểu tượng <strong>xe đạp</strong> ở góc dưới trái.<br>" +
+          "2. Kéo xe đạp vào vùng thí nghiệm.<br>" +
+          "3. Điều chỉnh tốc độ đạp bằng thanh trượt bên dưới.<br>" +
+          "→ Em sẽ thấy máy phát điện hoạt động và nước nóng lên!";
+}
+
+else if (q.includes("xe đạp") || q.includes("đạp xe")) {
+  reply = "Xe đạp là **nguồn năng lượng cơ học** trong thí nghiệm này.<br>" +
+          "→ Khi em đạp xe, năng lượng cơ học chuyển hóa thành điện năng qua máy phát điện → rồi thành nhiệt năng làm nóng nước.";
+}
+
+else if (q.includes("máy phát điện") || q.includes("máy phát")) {
+  reply = "Máy phát điện là thiết bị chuyển hóa **năng lượng cơ học → điện năng**.<br>" +
+          "→ Trong thí nghiệm, nó nhận năng lượng từ xe đạp → truyền điện để làm nóng nước.";
+}
+
+else if (q.includes("nước") || q.includes("cốc nước")) {
+  reply = "Nước là **vật liệu nhận nhiệt** trong thí nghiệm.<br>" +
+          "→ Nhiệt độ nước tăng lên khi nhận năng lượng từ máy phát điện.<br>" +
+          "→ Em có thể thay đổi khối lượng nước để xem ảnh hưởng đến tốc độ nóng lên!";
+}
+
+else if (q.includes("thang đo") || q.includes("nhiệt kế") || q.includes("nhiệt độ")) {
+  reply = "Thang đo nhiệt độ (nhiệt kế) cho biết <strong>nhiệt độ hiện tại của nước</strong>.<br>" +
+          "→ Khi nhiệt độ tăng, kim di chuyển lên trên.<br>" +
+          "→ Em hãy quan sát sự thay đổi khi đạp xe nhanh/chậm!";
+}
+
+else if (q.includes("biểu tượng năng lượng") || q.includes("biểu tượng e")) {
+  reply = "Biểu tượng <strong>‘Biểu tượng năng lượng’</strong> (có chữ E) cho phép em xem hình ảnh minh họa quá trình chuyển hóa năng lượng.<br>" +
+          "→ Bấm vào ô vuông nhỏ đó để bật/tắt hình ảnh năng lượng!";
+}
+
+else if (q.includes("thay nước") || q.includes("dầu") || q.includes("cát")) {
+  reply = "Em có thể thay nước bằng các vật liệu khác!<br>" +
+          "• Chọn biểu tượng <strong>cốc</strong> ở góc dưới phải.<br>" +
+          "• Thay đổi chất lỏng: dầu, cát, rượu...<br>" +
+          "→ Mỗi chất có khả năng hấp thụ nhiệt khác nhau → nhiệt độ tăng nhanh/chậm khác nhau!";
+}
+
+else if (q.includes("tăng nhiệt độ") || q.includes("nóng nhanh hơn")) {
+  reply = "Để tăng nhiệt độ nhanh hơn, em có thể:<br>" +
+          "1. Đạp xe <strong>nhanh hơn</strong> (tăng công suất)<br>" +
+          "2. Giảm khối lượng nước<br>" +
+          "3. Chọn chất lỏng có <strong>nhiệt dung riêng nhỏ</strong> (ví dụ: dầu thay vì nước).";
+}
+
+else if (q.includes("đạp xe chậm") || q.includes("đạp nhẹ")) {
+  reply = "Đúng rồi! Nếu em đạp xe <strong>chậm</strong>, năng lượng cung cấp ít hơn → nước nóng lên <strong>chậm hơn</strong>.<br>" +
+          "→ Đây là mối quan hệ giữa công suất và tốc độ tăng nhiệt — hãy thử so sánh nhé!";
+}
+
+else if (q.includes("nguồn năng lượng") || q.includes("mặt trời") || q.includes("gió")) {
+  reply = "Em hoàn toàn có thể chọn nguồn năng lượng khác!<br>" +
+          "• Ở góc dưới phải, chọn biểu tượng <strong>mặt trời</strong> (năng lượng mặt trời) hoặc <strong>tuabin gió</strong>.<br>" +
+          "→ Mỗi nguồn cung cấp năng lượng khác nhau → ảnh hưởng đến tốc độ nóng lên của nước.";
+}
       else {
         reply = "Em hãy thử hỏi về: cách chọn vật liệu, biểu tượng năng lượng, so sánh sắt và nước, hoặc cân bằng nhiệt nhé!";
       }
