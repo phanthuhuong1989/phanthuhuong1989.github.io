@@ -213,36 +213,41 @@
                 "→ Đây là sức mạnh của máy cơ đơn giản!";
       }
 
+      // === XỬ LÝ CÂU HỎI GỢI Ý ===
+
+      else if (q.includes("tại sao") && q.includes("2 vật bằng nhau") && q.includes("không cân bằng")) {
+        reply = "Vì <strong>cánh tay đòn khác nhau</strong>!<br>" +
+                "→ Dù khối lượng bằng nhau, nếu đặt ở vị trí khác xa điểm tựa → mô-men lực khác nhau → không cân bằng.<br>" +
+                "→ Hãy thử đặt 2 vật cùng khối lượng nhưng khác vị trí để kiểm tra!";
+      }
+      else if (q.includes("làm sao") && q.includes("tính cánh tay đòn")) {
+        reply = "Cánh tay đòn là khoảng cách từ <strong>điểm tựa</strong> đến <strong>đường tác dụng của lực</strong>.<br>" +
+                "→ Trong thí nghiệm, em đếm số ô vuông từ tâm đến vị trí đặt vật.<br>" +
+                "→ Ví dụ: vật đặt ở ô thứ 3 → cánh tay đòn = 3 đơn vị.";
+      }
+      else if (q.includes("ứng dụng") && q.includes("đòn bẩy") && q.includes("đời sống")) {
+        reply = "Đòn bẩy được ứng dụng trong:<br>" +
+                "• Dụng cụ: kéo, búa nhổ đinh, xe cút kít<br>" +
+                "• Xây dựng: cần cẩu, đòn gánh<br>" +
+                "• Cơ thể người: xương cẳng tay là đòn bẩy, cơ tay tạo lực<br>" +
+                "→ Hiểu đòn bẩy giúp em giải thích nhiều hiện tượng đời sống!";
+      }
+
+      // === XỬ LÝ CÂU HỎI TÍNH TOÁN ===
+      else if (q.includes("vật nặng") && q.includes("kg") && q.includes("cách điểm tựa") && q.includes("m") && q.includes("cân bằng")) {
+        reply = "Để thanh cân bằng, em áp dụng công thức: <strong>F₁ × d₁ = F₂ × d₂</strong><br>" +
+                "→ Vì F = m.g → công thức trở thành: <strong>m₁ × d₁ = m₂ × d₂</strong><br>" +
+                "Ví dụ: Vật 1: m₁ = 2 kg, d₁ = 3 m → Vật 2: m₂ = 3 kg → d₂ = ?<br>" +
+                "→ 2 × 3 = 3 × d₂ → d₂ = 2 m<br>" +
+                "→ Vậy vật 3 kg phải đặt cách điểm tựa 2 m để cân bằng!";
+      }
+
       // Câu trả lời mặc định
       else {
-        // === XỬ LÝ CÁC CÂU HỎI GỢI Ý (KHI KHÔNG PHÙ HỢP VỚI TỪ KHÓA) ===
-
-else if (q.includes("tại sao") && q.includes("2 vật bằng nhau") && q.includes("không cân bằng")) {
-  reply = "Vì <strong>cánh tay đòn khác nhau</strong>!<br>" +
-          "→ Dù khối lượng bằng nhau, nếu đặt ở vị trí khác xa điểm tựa → mô-men lực khác nhau → không cân bằng.<br>" +
-          "→ Hãy thử đặt 2 vật cùng khối lượng nhưng khác vị trí để kiểm tra!";
-}
-
-else if (q.includes("làm sao") && q.includes("tính cánh tay đòn")) {
-  reply = "Cánh tay đòn là khoảng cách từ <strong>điểm tựa</strong> đến <strong>đường tác dụng của lực</strong>.<br>" +
-          "→ Trong thí nghiệm, em đếm số ô vuông từ tâm đến vị trí đặt vật.<br>" +
-          "→ Ví dụ: vật đặt ở ô thứ 3 → cánh tay đòn = 3 đơn vị.";
-}
-
-else if (q.includes("ứng dụng") && q.includes("đòn bẩy") && q.includes("đời sống")) {
-  reply = "Đòn bẩy được ứng dụng trong:<br>" +
-          "• Dụng cụ: kéo, búa nhổ đinh, xe cút kít<br>" +
-          "• Xây dựng: cần cẩu, đòn gánh<br>" +
-          "• Cơ thể người: xương cẳng tay là đòn bẩy, cơ tay tạo lực<br>" +
-          "→ Hiểu đòn bẩy giúp em giải thích nhiều hiện tượng đời sống!";
-}
-
-else {
-  reply = "Câu hỏi của em rất hay! Nhưng để chatbot hỗ trợ tốt hơn, em hãy hỏi lại bằng cách:<br>" +
-          "• Gõ từ khóa: 'điểm tựa', 'cánh tay đòn', 'cân bằng'<br>" +
-          "• Hoặc hỏi cụ thể hơn: 'Tại sao 2 vật bằng nhau nhưng không cân bằng?'<br>" +
-          "→ Chatbot sẽ hỗ trợ em chi tiết hơn!";
-}
+        reply = "Câu hỏi rất hay! Em hãy thử hỏi lại bằng cách:<br>" +
+                "• Gõ từ khóa: 'điểm tựa', 'cánh tay đòn', 'cân bằng'<br>" +
+                "• Hoặc hỏi cụ thể hơn: 'Tại sao 2 vật bằng nhau nhưng không cân bằng?'<br>" +
+                "→ Chatbot sẽ hỗ trợ em chi tiết hơn!";
       }
 
       chatBody.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
