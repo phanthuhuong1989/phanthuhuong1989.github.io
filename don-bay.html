@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thí nghiệm ảo: Đòn bẩy – Vật lý 8</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 10px;
+      background: #f9f9f9;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .phet-frame {
+      width: 100%;
+      height: 650px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    /* Nút bật chatbot */
+    .chatbot-toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    /* Cửa sổ chatbot */
+    #chatbot {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      width: 360px;
+      height: 480px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+    #chat-header {
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border-radius: 12px 12px 0 0;
+      cursor: pointer;
+    }
+    #chat-body {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      font-size: 14px;
+      line-height: 1.5;
+      background: #fafafa;
+    }
+    #chat-input {
+      display: flex;
+      padding: 10px;
+      background: white;
+      border-top: 1px solid #eee;
+    }
+    #chat-input input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #chat-input button {
+      margin-left: 8px;
+      padding: 8px 14px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Thí nghiệm: Đòn bẩy</h2>
+    <iframe 
+      class="phet-frame"
+      src="https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_vi.html"
+      allowfullscreen>
+    </iframe>
+    <p><em>Thí nghiệm ảo từ PhET Interactive Simulations, University of Colorado Boulder.</em></p>
+  </div>
+
+  <!-- Nút bật chatbot -->
+  <button class="chatbot-toggle-btn" onclick="toggleChat()">💬 Hỏi trợ giảng AI</button>
+
+  <!-- Cửa sổ chatbot -->
+  <div id="chatbot">
+    <div id="chat-header" onclick="toggleChat()">Trợ giảng ảo – Vật lý 8</div>
+    <div id="chat-body">
+      <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
+        • “Bắt đầu từ đâu? Làm sao tạo đòn bẩy cân bằng?”<br>
+        • “Điểm tựa là gì? Cánh tay đòn là gì?”<br>
+        • “Tại sao càng xa điểm tựa thì càng dễ nâng vật?”<br>
+        • “Điều kiện để đòn bẩy cân bằng là gì?”<br>
+        • “Cái bẩy, kéo, xe cút kít hoạt động thế nào?”<br>
+        Hãy đặt câu hỏi nhé!</p>
+    </div>
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="Nhập câu hỏi..." onkeypress="if(event.key==='Enter') sendQuestion()" />
+      <button onclick="sendQuestion()">Gửi</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const chat = document.getElementById("chatbot");
+      if (chat.style.display === "flex") {
+        chat.style.display = "none";
+      } else {
+        chat.style.display = "flex";
+      }
+    }
+
+    function sendQuestion() {
+      const input = document.getElementById("user-input");
+      const question = input.value.trim();
+      if (!question) return;
+
+      const chatBody = document.getElementById("chat-body");
+      chatBody.innerHTML += `<p><strong>Em:</strong> ${question}</p>`;
+      
+      const q = question.toLowerCase();
+      let reply = "";
+
+      // === TRẢ LỜI CHUYÊN MÔN CHO THÍ NGHIỆM ĐÒN BẨY ===
+
+      // Câu hỏi từ học sinh tò mò
+      if (q.includes("bắt đầu") || q.includes("bắt đầu từ đâu")) {
+        reply = "Em bắt đầu bằng cách:<br>" +
+                "1. Chọn tab <strong>‘Cân bằng’</strong> ở trên cùng.<br>" +
+                "2. Kéo các khối nặng (2 kg, 5 kg, 10 kg...) vào hai bên đòn bẩy.<br>" +
+                "3. Thay đổi vị trí để xem khi nào đòn bẩy cân bằng!<br>" +
+                "→ Em hãy thử đặt cùng khối lượng nhưng khác vị trí!";
+      }
+      else if (q.includes("điểm tựa") || q.includes("trục quay")) {
+        reply = "<strong>Điểm tựa</strong> là điểm mà đòn bẩy tựa vào để quay.<br>" +
+                "→ Trong thí nghiệm, đó là điểm giữa màu đỏ.<br>" +
+                "→ Mọi lực đều tác dụng quanh điểm này.";
+      }
+      else if (q.includes("cánh tay đòn") || q.includes("khoảng cách")) {
+        reply = "<strong>Cánh tay đòn</strong> là khoảng cách từ <strong>điểm tựa</strong> đến <strong>đường tác dụng của lực</strong>.<br>" +
+                "→ Trong thí nghiệm, nó chính là số ô vuông từ tâm đến vị trí đặt vật.<br>" +
+                "→ Càng xa điểm tựa → cánh tay đòn càng lớn.";
+      }
+      else if (q.includes("tại sao") && q.includes("xa điểm tựa") && q.includes("dễ nâng")) {
+        reply = "Vì theo nguyên lý đòn bẩy: <strong>Lực × Cánh tay đòn = không đổi</strong>.<br>" +
+                "→ Nếu cánh tay đòn **lớn hơn**, lực cần dùng sẽ **nhỏ hơn**.<br>" +
+                "→ Đó là lý do người ta dùng cái bẩy để nâng vật nặng!";
+      }
+      else if (q.includes("điều kiện") && (q.includes("cân bằng") || q.includes("thăng bằng"))) {
+        reply = "Đòn bẩy cân bằng khi:<br>" +
+                "<strong>Tổng mô-men quay theo chiều kim đồng hồ = Tổng mô-men quay ngược chiều kim đồng hồ</strong>.<br>" +
+                "→ Hay đơn giản: <strong>F₁ × d₁ = F₂ × d₂</strong><br>" +
+                "• F: lực (ở đây là trọng lượng vật)<br>" +
+                "• d: cánh tay đòn";
+      }
+      else if (q.includes("cái bẩy") || q.includes("kéo") || q.includes("xe cút kít")) {
+        reply = "• <strong>Cái bẩy</strong>: điểm tựa ở giữa, lực tác dụng xa điểm tựa → nâng vật nhẹ nhàng.<br>" +
+                "• <strong>Kéo</strong>: điểm tựa ở đầu, lưỡi kéo là nơi tác dụng lực → cắt được vật cứng.<br>" +
+                "• <<strong>Xe cút kít</strong>: điểm tựa là bánh xe, tay cầm xa điểm tựa → nâng đất dễ dàng.<br>" +
+                "→ Tất cả đều ứng dụng nguyên lý đòn bẩy!";
+      }
+      else if (q.includes("mô-men") || q.includes("momen")) {
+        reply = "<strong>Mô-men lực</strong> = Lực × Cánh tay đòn.<br>" +
+                "→ Đơn vị: N.m<br>" +
+                "→ Mô-men càng lớn → khả năng làm quay càng mạnh.<br>" +
+                "→ Trong thí nghiệm, em thấy thanh nghiêng khi mô-men hai bên không bằng nhau.";
+      }
+      else if (q.includes("thử thách") || q.includes("game")) {
+        reply = "Ở tab <strong>‘Thử thách’</strong>, em sẽ phải:<br>" +
+                "• Cân bằng đòn bẩy với vật lạ (không biết khối lượng)<br>" +
+                "• Dùng nguyên lý F₁.d₁ = F₂.d₂ để suy ra khối lượng!<br>" +
+                "→ Đây là cách ứng dụng toán học vào vật lý thực tế!";
+      }
+      else if (q.includes("ứng dụng")) {
+        reply = "Đòn bẩy được ứng dụng trong:<br>" +
+                "• Dụng cụ: kéo, búa nhổ đinh, xe cút kít<br>" +
+                "• Xây dựng: cần cẩu, đòn gánh<br>" +
+                "• Cơ thể người: xương cẳng tay là đòn bẩy, cơ tay tạo lực<br>" +
+                "→ Hiểu đòn bẩy giúp em giải thích nhiều hiện tượng đời sống!";
+      }
+      else if (q.includes("lực") && q.includes("nặng")) {
+        reply = "Lực ở đây chính là <strong>trọng lượng</strong> của vật: P = m.g.<br>" +
+                "→ Vật 10 kg tạo lực ≈ 100 N.<br>" +
+                "→ Trong thí nghiệm, khối lượng tỷ lệ thuận với lực.";
+      }
+      else if (q.includes("có thể") && q.includes("nâng vật nặng bằng lực nhỏ")) {
+        reply = "Hoàn toàn có thể!<br>" +
+                "→ Chỉ cần đặt lực nhỏ ở vị trí **xa điểm tựa hơn** so với vật nặng.<br>" +
+                "Ví dụ: Dùng lực 20 N để nâng vật 100 N nếu cánh tay đòn của lực gấp 5 lần!<br>" +
+                "→ Đây là sức mạnh của máy cơ đơn giản!";
+      }
+
+      // Câu trả lời mặc định
+      else {
+        reply = "Câu hỏi rất hay! Em hãy thử hỏi cụ thể hơn, ví dụ:<br>" +
+                "• “Tại sao 2 vật bằng nhau nhưng không cân bằng?”<br>" +
+                "• “Làm sao tính cánh tay đòn?”<br>" +
+                "• “Ứng dụng của đòn bẩy trong đời sống?”<br>" +
+                "→ Trợ giảng luôn sẵn sàng giúp em!";
+      }
+
+      chatBody.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>
