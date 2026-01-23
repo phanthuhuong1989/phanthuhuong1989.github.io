@@ -211,6 +211,43 @@
         reply = "• <strong>Mật độ lưu chất</strong>: Là khối lượng riêng của chất lỏng (kg/L). Càng lớn → lực đẩy càng mạnh.<br>" +
                 "• <strong>Trọng lực</strong>: Là gia tốc trọng trường (g = 9.8 m/s²), ảnh hưởng đến trọng lượng vật và lực đẩy.";
       }
+	  // === PHẦN A: THAY ĐỔI VẬT LIỆU ===
+else if (q.includes("thay đổi") && (q.includes("gỗ") || q.includes("vật liệu") || q.includes("nhôm") || q.includes("sắt") || q.includes("nhựa"))) {
+  reply = "Em hoàn toàn có thể thay đổi vật liệu! Trong thí nghiệm, em chọn vật liệu ở góc trên bên phải (ví dụ: Nhôm, Sắt, Gỗ, Nhựa...).<br>" +
+          "→ Khi thay đổi vật liệu, <strong>khối lượng riêng</strong> (d) thay đổi → ảnh hưởng đến:<br>" +
+          "• Trọng lực P = d.V.g<br>" +
+          "• Điều kiện nổi/chìm (so sánh d<sub>vật</sub> và d<sub>lỏng</sub>)<br>" +
+          "→ Hãy thử với vật liệu nhẹ hơn nước (như gỗ, nhựa) và nặng hơn nước (như nhôm, sắt) để thấy sự khác biệt!";
+}
+
+// === PHẦN B: GIẢI THÍCH CÁC THÔNG SỐ TRONG GIAO DIỆN ===
+else if (q.includes("vật liệu") || q.includes("nhôm") || q.includes("sắt") || q.includes("gỗ") || q.includes("nhựa")) {
+  reply = "Em có thể chọn vật liệu ở góc trên bên phải. Mỗi vật liệu có khối lượng riêng khác nhau:<br>" +
+          "• Nhôm: d ≈ 2700 kg/m³<br>" +
+          "• Sắt: d ≈ 7800 kg/m³<br>" +
+          "• Gỗ: d ≈ 600–800 kg/m³<br>" +
+          "• Nhựa: d ≈ 900–1400 kg/m³<br>" +
+          "→ Vật liệu có d < 1000 kg/m³ (nhẹ hơn nước) thì <strong>nổi</strong>!";
+}
+else if (q.includes("khối lượng") || q.includes("13.50 kg")) {
+  reply = "Số <strong>13.50 kg</strong> là khối lượng của vật (lượng chất có trong vật).<br>" +
+          "→ Trọng lực P = m.g = 13.5 × 9.8 ≈ 132.3 N (như em thấy trong thí nghiệm).";
+}
+else if (q.includes("thể tích") || q.includes("5.00 l")) {
+  reply = "Số <strong>5.00 L</strong> là thể tích của vật (không phải thể tích nước!).<br>" +
+          "→ Thể tích này dùng để tính lực đẩy Archimedes: F = d<sub>lỏng</sub> × V<sub>vật</sub>.";
+}
+else if (q.includes("mật độ của vật") || q.includes("mật độ vật")) {
+  reply = "Mật độ của vật = Khối lượng / Thể tích.<br>" +
+          "Ví dụ: Vật 13.50 kg, thể tích 5.00 L → mật độ = 13.5 / 5.0 = 2.7 kg/L = 2700 kg/m³ → đây là nhôm!<br>" +
+          "→ So sánh với mật độ nước (1.0 kg/L) để biết vật nổi hay chìm.";
+}
+else if (q.includes("% chìm") || q.includes("phần trăm chìm")) {
+  reply = "<strong>% chìm</strong> là phần trăm thể tích vật bị ngập trong chất lỏng.<br>" +
+          "• Nếu % chìm = 100% → vật chìm hoàn toàn.<br>" +
+          "• Nếu % chìm < 100% → vật nổi một phần.<br>" +
+          "→ Em hãy thử đổi mật độ chất lỏng hoặc vật liệu để xem % chìm thay đổi thế nào!";
+}
       // 8. Câu trả lời mặc định
       else {
         reply = "Em hãy thử hỏi về: lực đẩy Archimedes, điều kiện vật nổi, công thức F = d.V, hoặc ý nghĩa các số liệu trong thí nghiệm nhé!";
