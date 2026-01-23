@@ -8,7 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 10,px;
+      padding: 10px;
       background: #f9f9f9;
     }
     .container {
@@ -146,62 +146,62 @@
       const q = question.toLowerCase();
       let reply = "";
 
-      // === ƯU TIÊN CÂU HỎI DÀI, CỤ THỂ TRƯỚC ===
+      // === XỬ LÝ TỪNG CÂU HỎI RIÊNG LẺ – KHÔNG TRÙNG LẶP ===
 
-      // Câu hỏi tính toán: m1, d1, m2, d2
-      if (q.includes("vật") && q.includes("kg") && q.includes("cách") && q.includes("m") && q.includes("cân bằng")) {
-        reply = "Để thanh cân bằng, áp dụng: <strong>m₁ × d₁ = m₂ × d₂</strong><br>" +
-                "Ví dụ: Vật 2 kg cách điểm tựa 3 m → vật 3 kg phải cách: d₂ = (2×3)/3 = 2 m.<br>" +
-                "→ Em hãy thử thay số vào công thức này!";
+      // 1. "Bắt đầu từ đâu?"
+      if (q.includes("bắt đầu") && q.includes("đâu")) {
+        reply = "Em bắt đầu bằng cách:<br>" +
+                "1. Chọn tab <strong>‘Cân bằng’</strong> ở trên cùng.<br>" +
+                "2. Kéo các khối nặng (2 kg, 5 kg...) vào hai bên đòn bẩy.<br>" +
+                "3. Thay đổi vị trí để xem khi nào thanh cân bằng!";
       }
-      // Tại sao càng xa điểm tựa thì càng dễ nâng?
-      else if (q.includes("tại sao") && q.includes("xa điểm tựa") && q.includes("dễ nâng")) {
-        reply = "Vì theo nguyên lý đòn bẩy: <strong>Lực × Cánh tay đòn = hằng số</strong>.<br>" +
-                "→ Nếu cánh tay đòn **lớn hơn**, lực cần dùng sẽ **nhỏ hơn**.<br>" +
-                "→ Đó là lý do người ta dùng cái bẩy để nâng vật nặng!";
+      // 2. "Làm sao tạo đòn bẩy cân bằng?"
+      else if (q.includes("làm sao") && q.includes("cân bằng") && !q.includes("điều kiện")) {
+        reply = "Để tạo đòn bẩy cân bằng, em hãy:<br>" +
+                "• Đặt các vật sao cho: <strong>m₁ × d₁ = m₂ × d₂</strong><br>" +
+                "• Thử thay đổi vị trí đến khi thanh nằm ngang!";
       }
-      // Điều kiện cân bằng
-      else if (q.includes("điều kiện") && (q.includes("cân bằng") || q.includes("thăng bằng"))) {
-        reply = "Đòn bẩy cân bằng khi:<br>" +
-                "<strong>Tổng mô-men quay theo chiều kim đồng hồ = Tổng mô-men quay ngược chiều kim đồng hồ</strong>.<br>" +
-                "→ Hay: <strong>F₁ × d₁ = F₂ × d₂</strong>";
-      }
-      // Cánh tay đòn là gì?
-      else if (q.includes("cánh tay đòn") || q.includes("cánh tay don")) {
-        reply = "<strong>Cánh tay đòn</strong> là khoảng cách từ <strong>điểm tựa</strong> đến <strong>đường tác dụng của lực</strong>.<br>" +
-                "→ Trong thí nghiệm, nó là số ô vuông từ tâm đến vị trí đặt vật.";
-      }
-      // Điểm tựa là gì?
+      // 3. "Điểm tựa là gì?"
       else if (q.includes("điểm tựa") || q.includes("diem tua")) {
         reply = "<strong>Điểm tựa</strong> là điểm mà đòn bẩy tựa vào để quay.<br>" +
                 "→ Trong thí nghiệm, đó là điểm giữa màu đỏ.";
       }
-      // Bắt đầu từ đâu?
-      else if (q.includes("bắt đầu") || q.includes("bat dau")) {
-        reply = "1. Chọn tab <strong>‘Cân bằng’</strong>.<br>" +
-                "2. Kéo khối nặng vào hai bên.<br>" +
-                "3. Thay đổi vị trí để xem khi nào cân bằng!";
+      // 4. "Cánh tay đòn là gì?"
+      else if (q.includes("cánh tay đòn") || q.includes("canh tay don")) {
+        reply = "<strong>Cánh tay đòn</strong> là khoảng cách từ <strong>điểm tựa</strong> đến <strong>vị trí đặt vật</strong>.<br>" +
+                "→ Trong thí nghiệm, nó là số ô vuông tính từ tâm.";
       }
-      // Làm sao tạo đòn bẩy cân bằng?
-      else if (q.includes("làm sao") && q.includes("cân bằng")) {
-        reply = "Đặt các vật sao cho: <strong>m₁ × d₁ = m₂ × d₂</strong>.<br>" +
-                "→ Em có thể thử nhiều lần để tìm vị trí phù hợp!";
+      // 5. "Tại sao càng xa điểm tựa thì càng dễ nâng vật?"
+      else if (q.includes("tại sao") && q.includes("xa điểm tựa") && q.includes("dễ nâng")) {
+        reply = "Vì theo nguyên lý đòn bẩy: <strong>Lực × Cánh tay đòn = hằng số</strong>.<br>" +
+                "→ Nếu cánh tay đòn **lớn hơn**, lực cần dùng sẽ **nhỏ hơn**.<br>" +
+                "→ Đó là sức mạnh của máy cơ đơn giản!";
       }
-      // Ứng dụng đời sống
+      // 6. "Điều kiện để đòn bẩy cân bằng là gì?"
+      else if (q.includes("điều kiện") && q.includes("cân bằng")) {
+        reply = "Điều kiện cân bằng: <strong>Tổng mô-men quay theo chiều kim đồng hồ = Tổng mô-men quay ngược chiều kim đồng hồ</strong>.<br>" +
+                "→ Hay: <strong>F₁ × d₁ = F₂ × d₂</strong> (với F = m.g).";
+      }
+      // 7. "Cái bẩy, kéo, xe cút kít hoạt động thế nào?"
       else if (q.includes("cái bẩy") || q.includes("kéo") || q.includes("xe cút kít")) {
         reply = "• <strong>Cái bẩy</strong>: điểm tựa ở giữa → nâng vật nhẹ.<br>" +
-                "• <strong>Kéo</strong>: điểm tựa ở đầu → cắt vật cứng.<br>" +
-                "• <strong>Xe cút kít</strong>: điểm tựa là bánh xe → nâng đất dễ.";
+                "• <strong>Kéo</strong>: điểm tựa ở đầu, lưỡi kéo xa → cắt mạnh.<br>" +
+                "• <strong>Xe cút kít</strong>: điểm tựa là bánh xe → tay cầm xa → nâng đất dễ.";
       }
-      // Mô-men lực
+      // 8. "Tại sao 2 vật bằng nhau nhưng không cân bằng?"
+      else if (q.includes("2 vật bằng nhau") && q.includes("không cân bằng")) {
+        reply = "Vì **cánh tay đòn khác nhau**!<br>" +
+                "→ Dù khối lượng bằng nhau, nếu đặt ở vị trí khác nhau → mô-men lực khác nhau → không cân bằng.<br>" +
+                "→ Hãy thử đặt 2 vật 5 kg ở ô 2 và ô 3 để thấy thanh nghiêng!";
+      }
+      // 9. Từ khóa đơn lẻ
+      else if (q.includes("cân bằng") && !q.includes("làm sao") && !q.includes("điều kiện")) {
+        reply = "Thanh cân bằng khi: <strong>m₁ × d₁ = m₂ × d₂</strong>.<br>" +
+                "→ Em có thể kiểm tra bằng cách quan sát thanh nằm ngang.";
+      }
       else if (q.includes("mô-men") || q.includes("momen")) {
         reply = "<strong>Mô-men lực</strong> = Lực × Cánh tay đòn.<br>" +
-                "→ Đơn vị: N.m<br>" +
                 "→ Quyết định khả năng làm quay của lực.";
-      }
-      // Ứng dụng chung
-      else if (q.includes("ứng dụng")) {
-        reply = "Đòn bẩy ứng dụng trong: kéo, búa nhổ đinh, xe cút kít, cần cẩu...";
       }
 
       // Câu trả lời mặc định
