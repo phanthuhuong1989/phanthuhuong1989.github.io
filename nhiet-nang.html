@@ -251,6 +251,41 @@ else if (q.includes("nguồn năng lượng") || q.includes("mặt trời") || q
           "• Ở góc dưới phải, chọn biểu tượng <strong>mặt trời</strong> (năng lượng mặt trời) hoặc <strong>tuabin gió</strong>.<br>" +
           "→ Mỗi nguồn cung cấp năng lượng khác nhau → ảnh hưởng đến tốc độ nóng lên của nước.";
 }
+// === BỔ SUNG CÂU HỎI MỚI TỪ HÌNH ẢNH ===
+
+else if (q.includes("biểu tượng e") || q.includes("e di chuyển")) {
+  reply = "Biểu tượng <strong>E</strong> đại diện cho **năng lượng** đang được truyền.<br>" +
+          "• Màu cam: năng lượng nhiệt<br>" +
+          "• Màu xanh: năng lượng điện<br>" +
+          "• Màu vàng: năng lượng ánh sáng<br>" +
+          "→ Em hãy quan sát hướng di chuyển của E để thấy quá trình chuyển hóa!";
+}
+
+else if (q.includes("các dạng năng lượng") || q.includes("cơ điện nhiệt")) {
+  reply = "Trong thí nghiệm, em thấy 5 dạng năng lượng:<br>" +
+          "• <strong>Cơ</strong>: từ xe đạp, tuabin gió<br>" +
+          "• <strong>Điện</strong>: từ máy phát điện<br>" +
+          "• <strong>Nhiệt</strong>: làm nóng nước, ấm trà<br>" +
+          "• <strong>Quang</strong>: ánh sáng từ bóng đèn, mặt trời<br>" +
+          "• <strong>Hóa</strong>: năng lượng trong nhiên liệu (than, khí đốt)<br>" +
+          "→ Mỗi dạng có thể chuyển hóa sang dạng khác!";
+}
+
+else if (q.includes("ấm trà") || q.includes("nóng")) {
+  reply = "Ấm trà là thiết bị dùng để **truyền nhiệt** từ lửa → nước.<br>" +
+          "→ Khi bật biểu tượng 'Biểu tượng năng lượng', em sẽ thấy E màu cam di chuyển từ lửa → ấm → nước.";
+}
+
+else if (q.includes("tuabin gió") || q.includes("gió")) {
+  reply = "Tuabin gió là thiết bị chuyển hóa **năng lượng cơ học của gió → điện năng**.<br>" +
+          "→ Em kéo tuabin vào vùng thí nghiệm → điều chỉnh tốc độ gió để xem ảnh hưởng đến nhiệt độ nước!";
+}
+
+else if (q.includes("bóng đèn") || q.includes("đèn sáng")) {
+  reply = "Bóng đèn là thiết bị chuyển hóa **điện năng → quang năng + nhiệt năng**.<br>" +
+          "→ Khi bật, nó phát sáng (quang) và tỏa nhiệt (nhiệt).<br>" +
+          "→ Em có thể so sánh: đèn sợi đốt tỏa nhiệt nhiều hơn đèn LED!";
+}
       else {
         reply = "Em hãy thử hỏi về: cách chọn vật liệu, biểu tượng năng lượng, so sánh sắt và nước, hoặc cân bằng nhiệt nhé!";
       }
