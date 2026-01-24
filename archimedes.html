@@ -160,16 +160,17 @@
                 "• Thể tích: 5.00 L<br>" +
                 "→ Em có thể thay đổi vật liệu để xem ảnh hưởng đến lực đẩy và điều kiện nổi/chìm.";
       }
-      // 3. "Các số liệu trong thí nghiệm có ý nghĩa gì?"
-      else if (q.includes("số liệu") || q.includes("ý nghĩa") || q.includes("giá trị")) {
-        reply = "Các số liệu trong thí nghiệm có ý nghĩa như sau:<br>" +
-                "• <strong>13.50 kg</strong>: khối lượng vật<br>" +
-                "• <strong>5.00 L</strong>: thể tích vật<br>" +
-                "• <strong>105.00 L</strong>: thể tích nước ban đầu<br>" +
-                "• <strong>83.3 N</strong>: lực kéo khi vật đang nhúng<br>" +
-                "• <strong>49.0 N</strong>: lực đẩy Archimedes.<br>" +
-                "→ Tất cả đều giúp em tính toán và hiểu bản chất lực đẩy.";
-      }
+   // 3. "Các số liệu trong thí nghiệm có ý nghĩa gì?" (cập nhật theo vật liệu Gỗ)
+else if (q.includes("số liệu") || q.includes("ý nghĩa") || q.includes("giá trị")) {
+  reply = "Các số liệu trong thí nghiệm có ý nghĩa như sau (khi dùng vật liệu <strong>Gỗ</strong>):<br>" +
+          "• <strong>2.00 kg</strong>: khối lượng vật<br>" +
+          "• <strong>5.00 L</strong>: thể tích vật<br>" +
+          "• <strong>102.00 L</strong>: thể tích nước ban đầu<br>" +
+          "• <strong>19.6 N</strong>: trọng lực của vật (P = m.g)<br>" +
+          "• <strong>19.6 N</strong>: lực kéo khi vật đang nhúng → lực đẩy = 0 N (vì vật nổi hoàn toàn)<br>" +
+          "• <strong>% chìm = 40%</strong>: phần trăm thể tích vật bị ngập trong nước.<br>" +
+          "→ Em hãy thử thay đổi vật liệu để xem sự thay đổi của các số liệu!";
+}
       // 4. "Mũi tên màu đỏ/xanh biểu diễn lực nào?"
       else if (q.includes("mũi tên") && (q.includes("màu đỏ") || q.includes("màu xanh"))) {
         reply = "Các mũi tên biểu diễn lực:<br>" +
