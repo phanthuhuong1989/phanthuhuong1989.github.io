@@ -110,11 +110,16 @@
     <div id="chat-header" onclick="toggleChat()">Trợ giảng ảo – Vật lý 8</div>
     <div id="chat-body">
       <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
-        • “Ampe kế và vôn kế mắc thế nào?”<br>
+        • “Ampe kế mắc thế nào?”<br>
+        • “Vôn kế mắc thế nào?”<br>
         • “Cầu chì có tác dụng gì?”<br>
         • “Tại sao đèn sáng/mờ/tắt?”<br>
-        • “Làm sao để đo U giữa hai đầu điện trở?”<br>
+        • “Làm sao đo U giữa hai đầu điện trở?”<br>
         • “Chiều dòng điện quy ước là gì?”<br>
+        • “Cách mắc mạch điện cơ bản?”<br>
+        • “So sánh mạch nối tiếp và song song?”<br>
+        • “Tại sao đèn mờ khi thêm điện trở?”<br>
+        • “Có thể thay pin bằng nguồn khác không?”<br>
         Hãy đặt câu hỏi nhé!</p>
     </div>
     <div id="chat-input">
@@ -144,41 +149,55 @@
       const q = question.toLowerCase();
       let reply = "";
 
-      // === XỬ LÝ TỪNG CÂU HỎI RIÊNG LẺ – KHÔNG TRÙNG LẶP ===
+      // === PHẦN TRẢ LỜI CHUYÊN MÔN – CHỈ LIÊN QUAN ĐẾN MẠCH ĐIỆN ===
 
-      // 1. "Ampe kế và vôn kế mắc thế nào?"
-      if (q.includes("ampe kế") && q.includes("vôn kế") && q.includes("mắc")) {
-        reply = "• <strong>Ampe kế</strong>: mắc <strong>nối tiếp</strong> với thiết bị cần đo.<br>" +
-                "• <strong>Vôn kế</strong>: mắc <strong>song song</strong> với hai đầu thiết bị.<br>" +
-                "→ Nhớ: Ampe kế nối tiếp, Vôn kế song song!";
+      // 1. Ampe kế mắc thế nào?
+      if (q.includes("ampe kế") && q.includes("mắc")) {
+        reply = "Ampe kế phải mắc <strong>nối tiếp</strong> với thiết bị cần đo.<br>" +
+                "→ Không được mắc song song — có thể làm hỏng đồng hồ!";
       }
-      // 2. "Cầu chì có tác dụng gì?"
+      // 2. Vôn kế mắc thế nào?
+      else if (q.includes("vôn kế") && q.includes("mắc")) {
+        reply = "Vôn kế phải mắc <strong>song song</strong> với hai đầu thiết bị cần đo.<br>" +
+                "→ Không được mắc nối tiếp — sẽ làm đứt mạch!";
+      }
+      // 3. Cầu chì có tác dụng gì?
       else if (q.includes("cầu chì") || q.includes("cau chi")) {
         reply = "<strong>Cầu chì</strong> là thiết bị bảo vệ mạch điện.<br>" +
                 "→ Khi dòng điện quá lớn, cầu chì sẽ <strong>đứt</strong> → ngắt mạch → tránh cháy nổ.<br>" +
                 "→ Luôn giữ cầu chì trong mạch khi thí nghiệm!";
       }
-      // 3. "Tại sao đèn sáng/mờ/tắt?"
+      // 4. Tại sao đèn sáng/mờ/tắt?
       else if (q.includes("đèn") && (q.includes("sáng") || q.includes("mờ") || q.includes("tắt"))) {
         reply = "• <strong>Sáng</strong>: mạch kín, đủ hiệu điện thế.<br>" +
                 "• <strong>Mờ</strong>: hiệu điện thế thấp hoặc điện trở lớn.<br>" +
                 "• <strong>Tắt</strong>: mạch hở, đứt dây, hoặc pin hết.<br>" +
                 "→ Em hãy kiểm tra mạch và nguồn điện!";
       }
-      // 4. "Làm sao để đo U giữa hai đầu điện trở?"
+      // 5. Làm sao đo U giữa hai đầu điện trở?
       else if (q.includes("đo") && q.includes("u") && q.includes("hai đầu") && q.includes("điện trở")) {
         reply = "Để đo hiệu điện thế giữa hai đầu điện trở:<br>" +
                 "1. Mắc <strong>vôn kế song song</strong> với điện trở.<br>" +
                 "2. Đảm bảo mạch kín và có nguồn điện.<br>" +
                 "3. Đọc giá trị trên vôn kế — đó chính là U!";
       }
-      // 5. "Chiều dòng điện quy ước là gì?"
+      // 6. Chiều dòng điện quy ước là gì?
       else if (q.includes("chiều dòng điện") && q.includes("quy ước")) {
         reply = "<strong>Chiều dòng điện quy ước</strong> là chiều chuyển động của <strong>điện tích dương</strong>:<br>" +
                 "→ Từ cực <strong>dương (+)</strong> của nguồn → qua mạch ngoài → về cực <strong>âm (–)</strong>.<br>" +
                 "→ Trong SGK, ta luôn dùng chiều này để vẽ sơ đồ mạch!";
       }
-      // 6. So sánh mạch nối tiếp/song song
+      // 7. Cách mắc mạch điện cơ bản?
+      else if (q.includes("cách mắc") && q.includes("mạch điện") && q.includes("cơ bản")) {
+        reply = "Để mắc mạch điện cơ bản, em làm theo các bước:<br>" +
+                "1. <strong>Xác định thiết bị</strong>: pin (nguồn), bóng đèn, dây dẫn.<br>" +
+                "2. <strong>Tạo mạch kín</strong>: nối dây từ cực (+) pin → bóng đèn → cực (–) pin.<br>" +
+                "3. <strong>Thêm dụng cụ đo</strong>:<br>" +
+                "&nbsp;&nbsp;• Ampe kế: mắc <strong>nối tiếp</strong> với bóng đèn.<br>" +
+                "&nbsp;&nbsp;• Vôn kế: mắc <strong>song song</strong> với bóng đèn.<br>" +
+                "⚠️ Lưu ý: luôn kiểm tra mạch <strong>chưa kín</strong> khi lắp, xong mới đóng mạch để tránh chập!";
+      }
+      // 8. So sánh mạch nối tiếp và song song?
       else if (q.includes("so sánh") && (q.includes("nối tiếp") || q.includes("song song"))) {
         reply = "<strong>Mạch nối tiếp</strong>:<br>" +
                 "• I = I₁ = I₂<br>" +
@@ -188,26 +207,17 @@
                 "• I = I₁ + I₂<br>" +
                 "→ Nối tiếp: dòng điện bằng nhau; Song song: hiệu điện thế bằng nhau.";
       }
-      // 7. Cách mắc ampe kế/vôn kế (riêng lẻ)
-      else if (q.includes("cách mắc") && q.includes("ampe kế")) {
-        reply = "Ampe kế phải mắc <strong>nối tiếp</strong> với thiết bị cần đo.<br>" +
-                "→ Không được mắc song song — có thể làm hỏng đồng hồ!";
+      // 9. Tại sao đèn mờ khi thêm điện trở?
+      else if (q.includes("đèn mờ") && q.includes("thêm điện trở")) {
+        reply = "Vì khi thêm điện trở, tổng điện trở mạch tăng → dòng điện giảm (theo định luật Ôm: I = U/R).<br>" +
+                "→ Dòng điện nhỏ hơn → đèn mờ đi.<br>" +
+                "→ Em hãy thử so sánh mạch có và không có điện trở!";
       }
-      else if (q.includes("cách mắc") && q.includes("vôn kế")) {
-        reply = "Vôn kế phải mắc <strong>song song</strong> với hai đầu thiết bị cần đo.<br>" +
-                "→ Không được mắc nối tiếp — sẽ làm đứt mạch!";
-      }
-      // 8. Vai trò của cầu chì
-      else if (q.includes("vai trò") && q.includes("cầu chì")) {
-        reply = "Vai trò của cầu chì là <strong>bảo vệ an toàn</strong> cho mạch điện.<br>" +
-                "→ Khi dòng điện vượt ngưỡng, cầu chì nóng chảy → ngắt mạch → tránh cháy nổ.";
-      }
-      // 9. Tại sao đèn sáng/mờ (riêng)
-      else if (q.includes("tại sao") && q.includes("đèn") && (q.includes("sáng") || q.includes("mờ"))) {
-        reply = "Độ sáng của đèn phụ thuộc vào:<br>" +
-                "• <strong>Hiệu điện thế</strong> nguồn: càng cao → càng sáng<br>" +
-                "• <strong>Điện trở</strong> mạch: càng lớn → dòng điện càng nhỏ → đèn mờ<br>" +
-                "→ Em hãy thử thay đổi pin hoặc điện trở để quan sát!";
+      // 10. Có thể thay pin bằng nguồn khác không?
+      else if (q.includes("thay pin") && q.includes("nguồn khác")) {
+        reply = "Em hoàn toàn có thể thay pin bằng nguồn điện khác!<br>" +
+                "• Ở góc dưới bên phải, chọn biểu tượng <strong>pin</strong> để đổi điện áp.<br>" +
+                "→ Điện áp cao hơn → dòng điện mạnh hơn → đèn sáng hơn!";
       }
 
       // Câu trả lời mặc định
