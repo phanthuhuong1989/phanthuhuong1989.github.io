@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thí nghiệm ảo: Đòn bẩy – Vật lý 8</title>
+  <title>Thí nghiệm ảo: Mạch điện – Vật lý 8</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -93,10 +93,10 @@
 <body>
 
   <div class="container">
-    <h2>Thí nghiệm: Đòn bẩy</h2>
+    <h2>Thí nghiệm: Mạch điện – Đo U và I</h2>
     <iframe 
       class="phet-frame"
-      src="https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_vi.html"
+      src="https://phet.colorado.edu/sims/html/circuit-construction-kit-dc-virtual-lab/latest/circuit-construction-kit-dc-virtual-lab_vi.html"
       allowfullscreen>
     </iframe>
     <p><em>Thí nghiệm ảo từ PhET Interactive Simulations, University of Colorado Boulder.</em></p>
@@ -111,10 +111,10 @@
     <div id="chat-body">
       <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
         • “Mục đích của thí nghiệm này là gì?”<br>
-        • “Điểm tựa là gì? Vai trò của nó thế nào?”<br>
-        • “Cánh tay đòn được tính từ đâu đến đâu?”<br>
-        • “Tại sao càng xa điểm tựa thì càng dễ nâng vật?”<br>
-        • “Điều kiện để đòn bẩy cân bằng là gì?”<br>
+        • “Chiều dòng điện quy ước thế nào?”<br>
+        • “Ampe kế và vôn kế mắc ra sao?”<br>
+        • “Làm sao đo U giữa hai đầu bóng đèn?”<br>
+        • “Tại sao đèn mờ khi mắc nối tiếp?”<br>
         Hoặc hỏi: “Tôi nên làm gì tiếp theo?” để được hướng dẫn theo bước!<br>
         Hãy đặt câu hỏi nhé!</p>
     </div>
@@ -150,103 +150,105 @@
       // 🔹 NHÓM 1: MỤC ĐÍCH
       if (q.includes("mục đích") || (q.includes("thí nghiệm") && q.includes("này") && q.includes("là gì"))) {
         reply = "Mục đích của thí nghiệm này là:<br>" +
-                "• Tìm hiểu cấu tạo và nguyên lý hoạt động của đòn bẩy<br>" +
-                "• Khám phá mối quan hệ giữa lực và cánh tay đòn<br>" +
-                "• Rút ra điều kiện để đòn bẩy cân bằng.";
+                "• Tìm hiểu cách đo hiệu điện thế (U) và cường độ dòng điện (I)<br>" +
+                "• So sánh đặc điểm của mạch nối tiếp và mạch song song<br>" +
+                "• Rút ra mối quan hệ giữa U, I và cách mắc mạch.";
       }
-      else if (q.includes("tìm hiểu") && q.includes("thao tác") && q.includes("đòn bẩy")) {
+      else if (q.includes("tìm hiểu") && q.includes("thao tác") && q.includes("mạch điện")) {
         reply = "Chúng ta muốn tìm hiểu:<br>" +
-                "• Vai trò của điểm tựa và cánh tay đòn<br>" +
-                "• Làm thế nào để nâng vật nặng bằng lực nhỏ<br>" +
-                "• Ứng dụng của đòn bẩy trong đời sống.";
+                "• Cách mắc ampe kế, vôn kế<br>" +
+                "• Sự thay đổi độ sáng đèn, số chỉ đồng hồ khi đổi cách mắc<br>" +
+                "• Nguyên tắc hoạt động của mạch điện trong đời sống.";
       }
 
       // 🔹 NHÓM 2: CƠ SỞ LÝ THUYẾT
-      else if (q.includes("điểm tựa") && q.includes("vai trò")) {
-        reply = "<strong>Điểm tựa</strong> là điểm mà đòn bẩy tựa vào để quay.<br>" +
-                "→ Vai trò: làm trục quay, giúp khuếch đại lực hoặc thay đổi hướng tác dụng.";
+      else if (q.includes("chiều dòng điện") && q.includes("quy ước")) {
+        reply = "Chiều dòng điện quy ước là chiều chuyển động của <strong>điện tích dương</strong>:<br>" +
+                "→ Từ cực <strong>dương (+)</strong> của nguồn → qua mạch ngoài → về cực <strong>âm (–)</strong>.<br>" +
+                "→ Trong SGK, ta luôn dùng chiều này để vẽ sơ đồ mạch!";
       }
-      else if (q.includes("cánh tay đòn") && q.includes("tính từ đâu")) {
-        reply = "<strong>Cánh tay đòn</strong> được tính từ <strong>điểm tựa</strong> đến <strong>đường tác dụng của lực</strong>.<br>" +
-                "→ Trong thí nghiệm, nó là số ô vuông từ tâm đến vị trí đặt vật.";
+      else if (q.includes("ampe kế") && q.includes("vôn kế") && q.includes("mắc")) {
+        reply = "• <strong>Ampe kế</strong>: mắc <strong>nối tiếp</strong> với thiết bị cần đo.<br>" +
+                "• <strong>Vôn kế</strong>: mắc <strong>song song</strong> với hai đầu thiết bị.<br>" +
+                "→ Nhớ: Ampe kế nối tiếp, Vôn kế song song!";
       }
-      else if (q.includes("lực tác dụng") && q.includes("lực cản")) {
-        reply = "• <strong>Lực tác dụng</strong>: lực do người hoặc máy tạo ra để nâng vật (ví dụ: tay đẩy cái bẩy)<br>" +
-                "• <strong>Lực cản</strong>: trọng lượng của vật cần nâng (ví dụ: hòn đá)<br>" +
-                "→ Trong thí nghiệm, lực cản là trọng lượng khối nặng.";
+      else if (q.includes("mạch nối tiếp") && q.includes("mạch song song")) {
+        reply = "<strong>Mạch nối tiếp</strong>: các thiết bị mắc liên tiếp, chỉ có một đường cho dòng điện.<br>" +
+                "<strong>Mạch song song</strong>: các thiết bị mắc thành nhiều nhánh, dòng điện chia ra.";
       }
-      else if (q.includes("ba loại đòn bẩy") || q.includes("kể tên")) {
-        reply = "Ba loại đòn bẩy:<br>" +
-                "1. <strong>Loại 1</strong>: điểm tựa ở giữa (ví dụ: cái bẩy)<br>" +
-                "2. <strong>Loại 2</strong>: lực cản ở giữa (ví dụ: xe cút kít)<br>" +
-                "3. <strong>Loại 3</strong>: lực tác dụng ở giữa (ví dụ: nhíp, cần câu)";
+      else if (q.includes("cầu chì") && q.includes("tác dụng")) {
+        reply = "Cầu chì bảo vệ mạch điện gia đình bằng cách:<br>" +
+                "→ Tự động đứt khi dòng điện quá lớn → ngắt mạch → tránh cháy nổ.<br>" +
+                "→ Đây là thiết bị an toàn không thể thiếu!";
       }
 
       // 🔹 NHÓM 3: DỰ ĐOÁN
-      else if (q.includes("vật nặng") && q.includes("xa điểm tựa") && q.includes("lực lớn hay nhỏ")) {
-        reply = "Cần lực <strong>nhỏ hơn</strong>.<br>" +
-                "Vì cánh tay đòn lớn hơn → mô-men lực lớn hơn → dễ cân bằng với vật nặng.";
+      else if (q.includes("mắc thêm") && q.includes("bóng đèn") && q.includes("nối tiếp") && q.includes("độ sáng")) {
+        reply = "Độ sáng của các bóng đèn sẽ <strong>mờ hơn</strong> so với khi chỉ có một bóng.<br>" +
+                "Vì: tổng điện trở tăng → dòng điện giảm → công suất tỏa nhiệt giảm → đèn mờ.";
       }
-      else if (q.includes("hai vật") && q.includes("khối lượng bằng nhau") && q.includes("cân bằng")) {
-        reply = "Đòn bẩy <strong>không cân bằng</strong>.<br>" +
-                "Vì mô-men lực = lực × cánh tay đòn → nếu cánh tay đòn khác nhau → mô-men khác nhau → thanh nghiêng.";
+      else if (q.includes("mắc thêm") && q.includes("bóng đèn") && q.includes("song song") && q.includes("dòng điện")) {
+        reply = "Cường độ dòng điện qua mạch chính sẽ <strong>tăng</strong>.<br>" +
+                "Vì: mắc song song làm giảm điện trở tương đương → dòng điện tăng (I = U/R).";
       }
 
       // 🔹 NHÓM 4: QUAN SÁT
-      else if (q.includes("kéo vật nặng") && q.includes("ra xa") && q.includes("nghiêng về phía nào")) {
-        reply = "Đòn bẩy nghiêng về <strong>phía vật nặng</strong>.<br>" +
-                "Vì mô-men lực phía đó tăng lên → mất cân bằng.";
+      else if (q.includes("hai bóng đèn") && q.includes("nối tiếp") && q.includes("độ sáng")) {
+        reply = "Hai bóng đèn sáng <strong>bằng nhau</strong> và <strong>mờ hơn</strong> so với khi chỉ có một bóng.<br>" +
+                "→ Vì cùng dòng điện, nhưng hiệu điện thế chia đều.";
       }
-      else if (q.includes("đo") && q.includes("cánh tay đòn") && q.includes("mô phỏng")) {
-        reply = "Em đếm số <strong>ô vuông</strong> từ điểm tựa (tâm) đến vị trí đặt vật.<br>" +
-                "→ Mỗi ô = 1 đơn vị độ dài → đó chính là cánh tay đòn.";
+      else if (q.includes("số chỉ") && q.includes("ampe kế") && q.includes("vôn kế") && q.includes("chuyển mạch")) {
+        reply = "• <strong>Ampe kế</strong>: số chỉ <strong>tăng</strong> khi chuyển sang mạch song song.<br>" +
+                "• <strong>Vôn kế</strong> (đo mỗi bóng): số chỉ <strong>giảm</strong> trong mạch nối tiếp, <strong>giữ nguyên</strong> trong mạch song song.";
       }
-      else if (q.includes("cân bằng") && q.includes("mối quan hệ") && q.includes("lực") && q.includes("khoảng cách")) {
-        reply = "Khi đòn bẩy cân bằng:<br>" +
-                "<strong>Lực × Cánh tay đòn = Hằng số</strong><br>" +
-                "→ Lực càng lớn thì cánh tay đòn càng nhỏ, và ngược lại.";
+      else if (q.includes("đo") && q.includes("hiệu điện thế") && q.includes("hai đầu") && q.includes("bóng đèn")) {
+        reply = "Mắc <strong>vôn kế song song</strong> với bóng đèn cần đo.<br>" +
+                "→ Đảm bảo mạch kín và nguồn điện hoạt động.<br>" +
+                "→ Đọc giá trị trên vôn kế — đó chính là U!";
       }
 
       // 🔹 NHÓM 5: GIẢI THÍCH – KẾT LUẬN
-      else if (q.includes("càng xa điểm tựa") && q.includes("dễ nâng") && q.includes("cánh tay đòn")) {
-        reply = "Vì khi xa điểm tựa, <strong>cánh tay đòn lớn hơn</strong>.<br>" +
-                "→ Với cùng một lực, mô-men lực (F × d) lớn hơn → dễ cân bằng hoặc nâng vật nặng.";
+      else if (q.includes("tại sao") && q.includes("bóng đèn") && q.includes("sáng mờ") && q.includes("nối tiếp")) {
+        reply = "Vì khi mắc nối tiếp:<br>" +
+                "• Tổng điện trở tăng → dòng điện giảm<br>" +
+                "• Hiệu điện thế chia đều cho các bóng → mỗi bóng nhận ít năng lượng hơn → sáng mờ.";
       }
-      else if (q.includes("điều kiện") && q.includes("cân bằng") && q.includes("công thức")) {
-        reply = "Điều kiện cân bằng:<br>" +
-                "<strong>F₁ × d₁ = F₂ × d₂</strong><br>" +
-                "• F₁, F₂: lực tác dụng và lực cản<br>" +
-                "• d₁, d₂: cánh tay đòn tương ứng";
+      else if (q.includes("hiệu điện thế") && q.includes("mỗi bóng đèn") && q.includes("nối tiếp") && q.includes("bằng nhau")) {
+        reply = "Nếu hai bóng đèn <strong>giống hệt nhau</strong>, hiệu điện thế giữa hai đầu mỗi bóng <strong>bằng nhau</strong>.<br>" +
+                "→ Điều này cho thấy: trong mạch nối tiếp, U chia đều cho các thiết bị có cùng điện trở.";
       }
-      else if (q.includes("ba ứng dụng") && q.includes("đòn bẩy")) {
-        reply = "Ba ứng dụng:<br>" +
-                "1. <strong>Cái bẩy</strong>: nâng vật nặng<br>" +
-                "2. <strong>Kéo</strong>: cắt giấy, vải<br>" +
-                "3. <strong>Xe cút kít</strong>: vận chuyển đất, cát";
+      else if (q.includes("so sánh") && q.includes("ưu điểm") && q.includes("nhược điểm") && (q.includes("nối tiếp") || q.includes("song song"))) {
+        reply = "<strong>Mạch nối tiếp</strong>:<br>" +
+                "• Ưu: tiết kiệm dây dẫn<br>" +
+                "• Nhược: nếu một bóng hỏng → cả mạch tắt<br>" +
+                "<strong>Mạch song song</strong>:<br>" +
+                "• Ưu: các thiết bị hoạt động độc lập<br>" +
+                "• Nhược: tốn dây dẫn, dễ quá tải<br>" +
+                "→ Mạng điện gia đình dùng mạch song song!";
       }
-      else if (q.includes("kết luận") && q.includes("mối quan hệ") && q.includes("lực") && q.includes("cánh tay đòn")) {
+      else if (q.includes("kết luận") && q.includes("mối quan hệ") && (q.includes("hiệu điện thế") || q.includes("cường độ dòng điện"))) {
         reply = "Kết luận:<br>" +
-                "• Lực và cánh tay đòn <strong>tỉ lệ nghịch</strong> với nhau<br>" +
-                "• Tích F × d quyết định khả năng làm quay của lực<br>" +
-                "• Hiểu điều này giúp ta sử dụng đòn bẩy hiệu quả trong đời sống.";
+                "• Trong mạch nối tiếp: I bằng nhau, U chia theo điện trở<br>" +
+                "• Trong mạch song song: U bằng nhau, I chia theo nhánh<br>" +
+                "→ Cách mắc mạch quyết định sự phân bố U và I.";
       }
 
       // 🔹 HƯỚNG DẪN THEO BƯỚC
       else if (q.includes("nên làm gì") || q.includes("tiếp theo") || q.includes("bắt đầu")) {
         reply = "<strong>Gợi ý theo bước:</strong><br>" +
                 "1. <strong>Mục đích</strong>: Hỏi ‘Mục đích thí nghiệm là gì?’<br>" +
-                "2. <strong>Lý thuyết</strong>: Hỏi ‘Điểm tựa là gì?’<br>" +
-                "3. <strong>Dự đoán</strong>: Thử hỏi ‘Nếu đặt vật xa điểm tựa, cần lực lớn hay nhỏ?’<br>" +
-                "4. <strong>Quan sát</strong>: Sau khi kéo vật, hỏi ‘Đòn bẩy nghiêng về phía nào?’<br>" +
-                "5. <strong>Kết luận</strong>: Cuối cùng, hỏi ‘Điều kiện cân bằng là gì?’";
+                "2. <strong>Lý thuyết</strong>: Hỏi ‘Chiều dòng điện quy ước thế nào?’<br>" +
+                "3. <strong>Dự đoán</strong>: Thử hỏi ‘Nếu mắc thêm bóng nối tiếp, đèn sẽ thế nào?’<br>" +
+                "4. <<strong>Quan sát</strong>: Sau khi lắp mạch, hỏi ‘Số chỉ ampe kế thay đổi ra sao?’<br>" +
+                "5. <strong>Kết luận</strong>: Cuối cùng, hỏi ‘So sánh ưu nhược điểm mạch nối tiếp và song song?’";
       }
 
       // Câu trả lời mặc định
       else {
         reply = "Câu hỏi rất hay! Em hãy thử hỏi:<br>" +
-                "• ‘Điểm tựa là gì?’<br>" +
-                "• ‘Tại sao càng xa điểm tựa thì càng dễ nâng vật?’<br>" +
-                "• ‘Điều kiện cân bằng là gì?’<br>" +
+                "• ‘Mục đích thí nghiệm là gì?’<br>" +
+                "• ‘Tại sao đèn mờ khi mắc nối tiếp?’<br>" +
+                "• ‘Làm sao đo U giữa hai đầu bóng đèn?’<br>" +
                 "→ Trợ giảng luôn sẵn sàng giúp em!";
       }
 
