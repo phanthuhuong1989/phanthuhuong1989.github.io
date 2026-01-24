@@ -160,16 +160,17 @@
                 "• Thể tích: 5.00 L<br>" +
                 "→ Em có thể thay đổi vật liệu để xem ảnh hưởng đến lực đẩy và điều kiện nổi/chìm.";
       }
-   // 3. "Các số liệu trong thí nghiệm có ý nghĩa gì?" (cập nhật theo vật liệu Gỗ)
+      // 3. "Các số liệu trong thí nghiệm có ý nghĩa gì?" (cập nhật theo vật liệu Gỗ + giải thích đúng chuyên môn)
 else if (q.includes("số liệu") || q.includes("ý nghĩa") || q.includes("giá trị")) {
   reply = "Các số liệu trong thí nghiệm có ý nghĩa như sau (khi dùng vật liệu <strong>Gỗ</strong>):<br>" +
           "• <strong>2.00 kg</strong>: khối lượng vật<br>" +
           "• <strong>5.00 L</strong>: thể tích vật<br>" +
-          "• <strong>102.00 L</strong>: thể tích nước ban đầu<br>" +
+          "• <strong>100.00 L</strong>: thể tích nước ban đầu<br>" +
           "• <strong>19.6 N</strong>: trọng lực của vật (P = m.g)<br>" +
-          "• <strong>19.6 N</strong>: lực kéo khi vật đang nhúng → lực đẩy = 0 N (vì vật nổi hoàn toàn)<br>" +
+          "• <strong>0.0 N</strong>: lực kéo khi vật đang nhúng → vì vật <strong>nổi hoàn toàn</strong>, nên lực kéo = 0 N.<br>" +
+          "• <strong>19.6 N</strong>: lực đẩy Archimedes = P – F<sub>kéo</sub> = 19.6 – 0 = 19.6 N.<br>" +
           "• <strong>% chìm = 40%</strong>: phần trăm thể tích vật bị ngập trong nước.<br>" +
-          "→ Em hãy thử thay đổi vật liệu để xem sự thay đổi của các số liệu!";
+          "→ Lưu ý: Nếu vật nổi, lực đẩy = trọng lực → lực kéo = 0 N. Em hãy kiểm tra bằng công thức F = d.V!";
 }
       // 4. "Mũi tên màu đỏ/xanh biểu diễn lực nào?"
       else if (q.includes("mũi tên") && (q.includes("màu đỏ") || q.includes("màu xanh"))) {
