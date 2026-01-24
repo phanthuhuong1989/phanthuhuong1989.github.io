@@ -110,9 +110,12 @@
     <div id="chat-header" onclick="toggleChat()">Trợ giảng ảo – Vật lý 8</div>
     <div id="chat-body">
       <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
-        • “Bắt đầu từ đâu? Làm sao tạo hệ thống chuyển hóa năng lượng?”<br>
-        • “Xe đạp, mặt trời, tuabin gió… cung cấp năng lượng gì?”<br>
-        • “Biểu tượng E màu cam/xanh/vàng đại diện cho gì?”<br>
+        • “Xe đạp cung cấp năng lượng gì?”<br>
+        • “Mặt trời cung cấp năng lượng gì?”<br>
+        • “Tuabin gió cung cấp năng lượng gì?”<br>
+        • “Biểu tượng E màu cam là gì?”<br>
+        • “Biểu tượng E màu xanh là gì?”<br>
+        • “Biểu tượng E màu vàng là gì?”<br>
         • “Làm sao để nước nóng lên nhanh hơn?”<br>
         • “Có thể thay nước bằng dầu hoặc cát không?”<br>
         Hãy đặt câu hỏi nhé!</p>
@@ -144,91 +147,73 @@
       const q = question.toLowerCase();
       let reply = "";
 
-      // === TRẢ LỜI CHUYÊN MÔN CHO THÍ NGHIỆM CHUYỂN HÓA NĂNG LƯỢNG ===
+      // === XỬ LÝ TỪNG CÂU HỎI RIÊNG LẺ – KHÔNG TRÙNG LẶP ===
 
-      if (q.includes("tên thí nghiệm") || q.includes("nhiệt năng") || q.includes("đúng tên")) {
+      // 1. Xe đạp
+      if (q.includes("xe đạp") && q.includes("năng lượng")) {
+        reply = "Xe đạp cung cấp <strong>năng lượng cơ học</strong>.<br>" +
+                "→ Khi em đạp, chân tác dụng lực làm bánh xe quay → tạo ra năng lượng chuyển động.";
+      }
+      // 2. Mặt trời
+      else if (q.includes("mặt trời") && q.includes("năng lượng")) {
+        reply = "Mặt trời cung cấp <strong>năng lượng quang (ánh sáng) và nhiệt</strong>.<br>" +
+                "→ Trong thí nghiệm, nó làm nóng nước trực tiếp qua bức xạ.";
+      }
+      // 3. Tuabin gió
+      else if (q.includes("tuabin gió") && q.includes("năng lượng")) {
+        reply = "Tuabin gió cung cấp <strong>năng lượng cơ học</strong>.<br>" +
+                "→ Gió thổi làm cánh quạt quay → tạo ra chuyển động cơ học.";
+      }
+      // 4. Biểu tượng E màu cam
+      else if (q.includes("biểu tượng e") && (q.includes("màu cam") || q.includes("cam"))) {
+        reply = "Biểu tượng <strong>E màu cam</strong> đại diện cho <strong>nhiệt năng</strong>.<br>" +
+                "→ Nó di chuyển từ nguồn nóng (bếp, mặt trời) sang vật lạnh (nước, ấm trà).";
+      }
+      // 5. Biểu tượng E màu xanh
+      else if (q.includes("biểu tượng e") && (q.includes("màu xanh") || q.includes("xanh"))) {
+        reply = "Biểu tượng <strong>E màu xanh</strong> đại diện cho <strong>điện năng</strong>.<br>" +
+                "→ Nó di chuyển từ máy phát điện đến các thiết bị tiêu thụ.";
+      }
+      // 6. Biểu tượng E màu vàng
+      else if (q.includes("biểu tượng e") && (q.includes("màu vàng") || q.includes("vàng"))) {
+        reply = "Biểu tượng <strong>E màu vàng</strong> đại diện cho <strong>quang năng (ánh sáng)</strong>.<br>" +
+                "→ Nó phát ra từ bóng đèn, mặt trời.";
+      }
+      // 7. Làm sao để nước nóng lên nhanh hơn?
+      else if (q.includes("làm sao") && q.includes("nóng lên nhanh")) {
+        reply = "Để nước nóng lên nhanh hơn, em có thể:<br>" +
+                "1. Dùng nguồn năng lượng mạnh hơn (mặt trời thay vì xe đạp)<br>" +
+                "2. Giảm khối lượng nước<br>" +
+                "3. Chọn chất lỏng có nhiệt dung riêng nhỏ (dầu thay vì nước).";
+      }
+      // 8. Thay nước bằng dầu/cát
+      else if (q.includes("thay nước") && (q.includes("dầu") || q.includes("cát"))) {
+        reply = "Em có thể thay nước bằng các chất lỏng khác!<br>" +
+                "• Chọn biểu tượng <strong>cốc</strong> ở góc dưới phải.<br>" +
+                "• Mỗi chất có khả năng hấp thụ nhiệt khác nhau → nhiệt độ tăng nhanh/chậm khác nhau!";
+      }
+      // 9. Tên thí nghiệm
+      else if (q.includes("tên thí nghiệm") || q.includes("nhiệt năng") || q.includes("đúng tên")) {
         reply = "Thí nghiệm này không chỉ nói về 'nhiệt năng', mà là về <strong>sự chuyển hóa và truyền năng lượng</strong> giữa các dạng:<br>" +
                 "• Cơ → Điện → Nhiệt<br>" +
                 "• Ánh sáng → Điện → Nhiệt<br>" +
                 "• Hóa → Nhiệt → Cơ<br>" +
                 "→ Đây là chủ đề trọng tâm của Bài 21 – SGK KHTN 8 (Kết nối tri thức).";
       }
+      // 10. Bắt đầu từ đâu?
       else if (q.includes("bắt đầu") || q.includes("bắt đầu từ đâu")) {
         reply = "Em bắt đầu bằng cách:<br>" +
-                "1. Nhấn vào biểu tượng <strong>xe đạp</strong> ở góc dưới trái.<br>" +
-                "2. Kéo xe đạp vào vùng thí nghiệm.<br>" +
-                "3. Điều chỉnh tốc độ đạp bằng thanh trượt bên dưới.<br>" +
-                "→ Em sẽ thấy máy phát điện hoạt động và nước nóng lên!";
+                "1. Nhấn vào biểu tượng <strong>xe đạp/mặt trời/tuabin gió</strong> ở góc dưới trái.<br>" +
+                "2. Kéo vào vùng thí nghiệm.<br>" +
+                "3. Quan sát biểu tượng E di chuyển!";
       }
-      else if (q.includes("xe đạp") || q.includes("đạp xe")) {
-        reply = "Xe đạp là **nguồn năng lượng cơ học** trong thí nghiệm này.<br>" +
-                "→ Khi em đạp xe, năng lượng cơ học chuyển hóa thành điện năng qua máy phát điện → rồi thành nhiệt năng làm nóng nước.";
-      }
-      else if (q.includes("máy phát điện") || q.includes("máy phát")) {
-        reply = "Máy phát điện là thiết bị chuyển hóa **năng lượng cơ học → điện năng**.<br>" +
-                "→ Trong thí nghiệm, nó nhận năng lượng từ xe đạp → truyền điện để làm nóng nước.";
-      }
-      else if (q.includes("nước") || q.includes("cốc nước")) {
-        reply = "Nước là **vật liệu nhận nhiệt** trong thí nghiệm.<br>" +
-                "→ Nhiệt độ nước tăng lên khi nhận năng lượng từ máy phát điện.<br>" +
-                "→ Em có thể thay đổi khối lượng nước để xem ảnh hưởng đến tốc độ nóng lên!";
-      }
-      else if (q.includes("thang đo") || q.includes("nhiệt kế") || q.includes("nhiệt độ")) {
-        reply = "Thang đo nhiệt độ (nhiệt kế) cho biết <strong>nhiệt độ hiện tại của nước</strong>.<br>" +
-                "→ Khi nhiệt độ tăng, kim di chuyển lên trên.<br>" +
-                "→ Em hãy quan sát sự thay đổi khi đạp xe nhanh/chậm!";
-      }
-      else if (q.includes("biểu tượng năng lượng") || q.includes("biểu tượng e")) {
-        reply = "Biểu tượng <strong>‘Biểu tượng năng lượng’</strong> (có chữ E) cho phép em xem hình ảnh minh họa quá trình chuyển hóa năng lượng.<br>" +
-                "→ Bấm vào ô vuông nhỏ đó để bật/tắt hình ảnh năng lượng!";
-      }
-      else if (q.includes("thay nước") || q.includes("dầu") || q.includes("cát")) {
-        reply = "Em có thể thay nước bằng các vật liệu khác!<br>" +
-                "• Chọn biểu tượng <strong>cốc</strong> ở góc dưới phải.<br>" +
-                "• Thay đổi chất lỏng: dầu, cát, rượu...<br>" +
-                "→ Mỗi chất có khả năng hấp thụ nhiệt khác nhau → nhiệt độ tăng nhanh/chậm khác nhau!";
-      }
-      else if (q.includes("tăng nhiệt độ") || q.includes("nóng nhanh hơn")) {
-        reply = "Để tăng nhiệt độ nhanh hơn, em có thể:<br>" +
-                "1. Đạp xe <strong>nhanh hơn</strong> (tăng công suất)<br>" +
-                "2. Giảm khối lượng nước<br>" +
-                "3. Chọn chất lỏng có <strong>nhiệt dung riêng nhỏ</strong> (ví dụ: dầu thay vì nước).";
-      }
-      else if (q.includes("đạp xe chậm") || q.includes("đạp nhẹ")) {
-        reply = "Đúng rồi! Nếu em đạp xe <strong>chậm</strong>, năng lượng cung cấp ít hơn → nước nóng lên <strong>chậm hơn</strong>.<br>" +
-                "→ Đây là mối quan hệ giữa công suất và tốc độ tăng nhiệt — hãy thử so sánh nhé!";
-      }
-      else if (q.includes("nguồn năng lượng") || q.includes("mặt trời") || q.includes("gió")) {
-        reply = "Em hoàn toàn có thể chọn nguồn năng lượng khác!<br>" +
-                "• Ở góc dưới phải, chọn biểu tượng <strong>mặt trời</strong> (năng lượng mặt trời) hoặc <strong>tuabin gió</strong>.<br>" +
-                "→ Mỗi nguồn cung cấp năng lượng khác nhau → ảnh hưởng đến tốc độ nóng lên của nước.";
-      }
-      else if (q.includes("biểu tượng e") || q.includes("e di chuyển")) {
-        reply = "Biểu tượng <strong>E</strong> đại diện cho **năng lượng** đang được truyền.<br>" +
-                "• Màu cam: năng lượng nhiệt<br>" +
-                "• Màu xanh: năng lượng điện<br>" +
-                "• Màu vàng: năng lượng ánh sáng<br>" +
-                "→ Em hãy quan sát hướng di chuyển của E để thấy quá trình chuyển hóa!";
-      }
-      else if (q.includes("các dạng năng lượng") || q.includes("cơ điện nhiệt")) {
-        reply = "Trong thí nghiệm, em thấy 5 dạng năng lượng:<br>" +
-                "• <strong>Cơ</strong>: từ xe đạp, tuabin gió<br>" +
-                "• <strong>Điện</strong>: từ máy phát điện<br>" +
-                "• <strong>Nhiệt</strong>: làm nóng nước, ấm trà<br>" +
-                "• <strong>Quang</strong>: ánh sáng từ mặt trời<br>" +
-                "• <strong>Hóa</strong>: năng lượng trong nhiên liệu (than, khí đốt)<br>" +
-                "→ Mỗi dạng có thể chuyển hóa sang dạng khác!";
-      }
-      else if (q.includes("ấm trà") || q.includes("nóng")) {
-        reply = "Ấm trà là thiết bị dùng để **truyền nhiệt** từ lửa → nước.<br>" +
-                "→ Khi bật biểu tượng 'Biểu tượng năng lượng', em sẽ thấy E màu cam di chuyển từ lửa → ấm → nước.";
-      }
-      else if (q.includes("tuabin gió") || q.includes("gió")) {
-        reply = "Tuabin gió là thiết bị chuyển hóa **năng lượng cơ học của gió → điện năng**.<br>" +
-                "→ Em kéo tuabin vào vùng thí nghiệm → điều chỉnh tốc độ gió để xem ảnh hưởng đến nhiệt độ nước!";
-      }
+
+      // Câu trả lời mặc định
       else {
-        reply = "Em hãy thử hỏi về: các dạng năng lượng, biểu tượng E, cách chọn nguồn, hoặc so sánh tốc độ nóng lên nhé!";
+        reply = "Câu hỏi rất hay! Em hãy thử hỏi lại bằng cách:<br>" +
+                "• Gõ đúng từ khóa: 'xe đạp', 'mặt trời', 'tuabin gió', 'E màu cam'<br>" +
+                "• Hoặc hỏi từng câu riêng lẻ.<br>" +
+                "→ Trợ giảng luôn sẵn sàng giúp em!";
       }
 
       chatBody.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
