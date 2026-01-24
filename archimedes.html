@@ -113,11 +113,19 @@
         • “Lực đẩy Archimedes là gì?”<br>
         • “Vật màu xanh này là gì?”<br>
         • “Các số liệu trong thí nghiệm có ý nghĩa gì?”<br>
-        • “Mũi tên màu đỏ/xanh biểu diễn lực nào?”<br>
+        • “Mũi tên màu đỏ biểu diễn lực nào?”<br>
+        • “Mũi tên màu xanh biểu diễn lực nào?”<br>
         • “% chìm là gì? Làm sao để vật nổi?”<br>
         • “Tại sao sắt chìm trong nước?”<br>
         • “Làm sao tính lực đẩy?”<br>
         • “Thay đổi chất lỏng như thế nào?”<br>
+        • “Tại sao vật nổi thì lực kéo = 0?”<br>
+        • “Làm sao biết vật chìm hay nổi trước khi thả?”<br>
+        • “Ứng dụng của lực đẩy Archimedes trong đời sống?”<br>
+        • “Tại sao càng xuống sâu, lực đẩy không tăng?”<br>
+        • “Tại sao tàu sắt nặng hàng tấn lại nổi?”<br>
+        • “Nếu dùng nước muối, vật có nổi dễ hơn không?”<br>
+        • “Lực đẩy có tồn tại trong không khí không?”<br>
         Hãy đặt câu hỏi nhé!</p>
     </div>
     <div id="chat-input">
@@ -147,64 +155,108 @@
       const q = question.toLowerCase();
       let reply = "";
 
-      // === XỬ LÝ TỪNG CÂU HỎI RIÊNG LẺ – KHÔNG TRÙNG LẶP ===
+      // === PHẦN TRẢ LỜI CHUYÊN MÔN – CHỈ LIÊN QUAN ĐẾN LỰC ĐẨY ARCHIMEDES ===
 
-      // 1. "Lực đẩy Archimedes là gì?"
+      // 1. Lực đẩy Archimedes là gì?
       if (q.includes("lực đẩy archimedes") || q.includes("lực đẩy ác si mét")) {
         reply = "Lực đẩy Archimedes là lực do chất lỏng tác dụng lên vật nhúng vào nó, có phương thẳng đứng, chiều từ dưới lên. Độ lớn: <strong>F = d.V</strong>, với d là trọng lượng riêng của chất lỏng, V là thể tích phần vật chìm.";
       }
-      // 2. "Vật màu xanh này là gì?"
+      // 2. Vật màu xanh này là gì?
       else if (q.includes("vật màu xanh") || q.includes("vật này là gì")) {
         reply = "Vật màu xanh là <strong>vật cần thí nghiệm</strong>.<br>" +
-                "• Khối lượng: 13.50 kg<br>" +
+                "• Khối lượng: 2.00 kg<br>" +
                 "• Thể tích: 5.00 L<br>" +
                 "→ Em có thể thay đổi vật liệu để xem ảnh hưởng đến lực đẩy và điều kiện nổi/chìm.";
       }
-      // 3. "Các số liệu trong thí nghiệm có ý nghĩa gì?" (cập nhật theo vật liệu Gỗ + giải thích đúng chuyên môn)
-else if (q.includes("số liệu") || q.includes("ý nghĩa") || q.includes("giá trị")) {
-  reply = "Các số liệu trong thí nghiệm có ý nghĩa như sau (khi dùng vật liệu <strong>Gỗ</strong>):<br>" +
-          "• <strong>2.00 kg</strong>: khối lượng vật<br>" +
-          "• <strong>5.00 L</strong>: thể tích vật<br>" +
-          "• <strong>100.00 L</strong>: thể tích nước ban đầu<br>" +
-          "• <strong>19.6 N</strong>: trọng lực của vật (P = m.g)<br>" +
-          "• <strong>0.0 N</strong>: lực kéo khi vật đang nhúng → vì vật <strong>nổi hoàn toàn</strong>, nên lực kéo = 0 N.<br>" +
-          "• <strong>19.6 N</strong>: lực đẩy Archimedes = P – F<sub>kéo</sub> = 19.6 – 0 = 19.6 N.<br>" +
-          "• <strong>% chìm = 40%</strong>: phần trăm thể tích vật bị ngập trong nước.<br>" +
-          "→ Lưu ý: Nếu vật nổi, lực đẩy = trọng lực → lực kéo = 0 N. Em hãy kiểm tra bằng công thức F = d.V!";
-}
-      // 4. "Mũi tên màu đỏ/xanh biểu diễn lực nào?"
-      else if (q.includes("mũi tên") && (q.includes("màu đỏ") || q.includes("màu xanh"))) {
-        reply = "Các mũi tên biểu diễn lực:<br>" +
-                "• <strong>Mũi tên xanh</strong>: Trọng lực (hướng xuống)<br>" +
-                "• <strong>Mũi tên đỏ</strong>: Lực đẩy Archimedes (hướng lên)<br>" +
-                "• <strong>Mũi tên cam</strong>: Lực tiếp xúc (nếu vật chạm đáy)<br>" +
-                "→ Em hãy quan sát sự thay đổi độ dài mũi tên khi đổi chất lỏng hoặc kích thước vật!";
+      // 3. Các số liệu trong thí nghiệm có ý nghĩa gì?
+      else if (q.includes("số liệu") || q.includes("ý nghĩa") || q.includes("giá trị")) {
+        reply = "Các số liệu trong thí nghiệm có ý nghĩa như sau (khi dùng vật liệu <strong>Gỗ</strong>):<br>" +
+                "• <strong>2.00 kg</strong>: khối lượng vật<br>" +
+                "• <strong>5.00 L</strong>: thể tích vật<br>" +
+                "• <strong>100.00 L</strong>: thể tích nước ban đầu<br>" +
+                "• <strong>19.6 N</strong>: trọng lực của vật (P = m.g)<br>" +
+                "• <strong>0.0 N</strong>: lực kéo khi vật đang nhúng → vì vật <strong>nổi hoàn toàn</strong><br>" +
+                "• <strong>19.6 N</strong>: lực đẩy Archimedes = P – F<sub>kéo</sub> = 19.6 – 0 = 19.6 N<br>" +
+                "• <strong>% chìm = 40%</strong>: phần trăm thể tích vật bị ngập trong nước.<br>" +
+                "→ Em hãy thử thay đổi vật liệu để xem sự thay đổi của các số liệu!";
       }
-      // 5. "% chìm là gì? Làm sao để vật nổi?"
+      // 4. Mũi tên màu đỏ biểu diễn lực nào?
+      else if (q.includes("mũi tên") && (q.includes("màu đỏ") || q.includes("đỏ"))) {
+        reply = "Mũi tên <strong>màu đỏ</strong> biểu diễn <strong>lực đẩy Archimedes</strong> — hướng thẳng đứng từ dưới lên.";
+      }
+      // 5. Mũi tên màu xanh biểu diễn lực nào?
+      else if (q.includes("mũi tên") && (q.includes("màu xanh") || q.includes("xanh"))) {
+        reply = "Mũi tên <strong>màu xanh</strong> biểu diễn <strong>trọng lực</strong> — hướng thẳng đứng từ trên xuống.";
+      }
+      // 6. % chìm là gì? Làm sao để vật nổi?
       else if (q.includes("% chìm") || q.includes("phần trăm chìm")) {
         reply = "<strong>% chìm</strong> là phần trăm thể tích vật bị ngập trong chất lỏng.<br>" +
                 "• Nếu % chìm = 100% → vật chìm hoàn toàn.<br>" +
                 "• Nếu % chìm < 100% → vật nổi một phần.<br>" +
                 "→ Để vật nổi, chọn vật liệu có mật độ nhỏ hơn chất lỏng!";
       }
-      // 6. "Tại sao sắt chìm trong nước?"
+      // 7. Tại sao sắt chìm trong nước?
       else if (q.includes("tại sao") && q.includes("sắt") && q.includes("chìm") && q.includes("nước")) {
         reply = "Vì mật độ sắt (≈7800 kg/m³) > mật độ nước (1000 kg/m³).<br>" +
                 "→ Lực đẩy Archimedes < trọng lực → vật chìm.<br>" +
                 "→ Hãy thử với gỗ (mật độ ≈600 kg/m³) để thấy sự khác biệt!";
       }
-      // 7. "Làm sao tính lực đẩy?"
+      // 8. Làm sao tính lực đẩy?
       else if (q.includes("làm sao") && q.includes("tính") && q.includes("lực đẩy")) {
         reply = "Em có thể tính lực đẩy Archimedes theo 2 cách:<br>" +
                 "1. <strong>Tính toán</strong>: F = d.V (d: trọng lượng riêng chất lỏng, V: thể tích phần vật chìm)<br>" +
                 "2. <strong>Thực nghiệm</strong>: F = P - F<sub>kéo</sub> (trọng lực trừ lực kéo khi nhúng)<br>" +
                 "→ Trong thí nghiệm, em thấy cả hai giá trị này!";
       }
-      // 8. "Thay đổi chất lỏng như thế nào?"
+      // 9. Thay đổi chất lỏng như thế nào?
       else if (q.includes("thay đổi") && q.includes("chất lỏng")) {
         reply = "Em có thể thay đổi chất lỏng bằng cách:<br>" +
                 "• Ở góc dưới bên phải, chọn biểu tượng <strong>cốc</strong> để đổi chất lỏng (dầu, cát, rượu...).<br>" +
                 "→ Mỗi chất lỏng có trọng lượng riêng khác nhau → ảnh hưởng đến lực đẩy và % chìm!";
+      }
+      // 10. Tại sao vật nổi thì lực kéo = 0?
+      else if (q.includes("vật nổi") && q.includes("lực kéo") && q.includes("bằng 0")) {
+        reply = "Vì khi vật <strong>nổi</strong>, lực đẩy Archimedes <strong>cân bằng</strong> với trọng lực.<br>" +
+                "→ Không cần lực kéo từ bên ngoài → lực kéo = 0 N.<br>" +
+                "→ Đây là trạng thái cân bằng tự nhiên!";
+      }
+      // 11. Làm sao biết vật chìm hay nổi trước khi thả?
+      else if (q.includes("làm sao") && q.includes("biết") && (q.includes("chìm") || q.includes("nổi"))) {
+        reply = "So sánh <strong>mật độ vật</strong> và <strong>mật độ chất lỏng</strong>:<br>" +
+                "• Nếu d<sub>vật</sub> < d<sub>lỏng</sub> → vật <strong>nổi</strong><br>" +
+                "• Nếu d<sub>vật</sub> > d<sub>lỏng</sub> → vật <strong>chìm</strong><br>" +
+                "→ Em có thể tính mật độ = khối lượng / thể tích.";
+      }
+      // 12. Ứng dụng của lực đẩy Archimedes trong đời sống?
+      else if (q.includes("ứng dụng") && q.includes("lực đẩy")) {
+        reply = "Lực đẩy Archimedes được ứng dụng trong:<br>" +
+                "• <strong>Tàu thủy</strong>: thiết kế khoang rỗng để giảm mật độ trung bình<br>" +
+                "• <strong>Khinh khí cầu</strong>: dùng khí nhẹ hơn không khí<br>" +
+                "• <strong>Cân thủy tĩnh</strong>: đo mật độ chất lỏng<br>" +
+                "• <strong>Phao cứu hộ</strong>: nổi trên mặt nước nhờ vật liệu nhẹ.";
+      }
+      // 13. Tại sao càng xuống sâu, lực đẩy không tăng?
+      else if (q.includes("xuống sâu") && q.includes("lực đẩy") && q.includes("không tăng")) {
+        reply = "Vì lực đẩy Archimedes chỉ phụ thuộc vào:<br>" +
+                "• <strong>Thể tích phần vật chìm</strong><br>" +
+                "• <strong>Mật độ chất lỏng</strong><br>" +
+                "→ Nếu vật đã chìm hoàn toàn, thể tích chìm không đổi → lực đẩy không đổi dù xuống sâu hơn.";
+      }
+      // 14. Tại sao tàu sắt nặng hàng tấn lại nổi?
+      else if (q.includes("tàu sắt") && q.includes("nổi")) {
+        reply = "Vì tàu được thiết kế **rỗng bên trong** → thể tích lớn → mật độ trung bình < mật độ nước.<br>" +
+                "→ Dù làm bằng sắt, nhưng tổng khối lượng / tổng thể tích < 1000 kg/m³ → nên nổi!";
+      }
+      // 15. Nếu dùng nước muối, vật có nổi dễ hơn không?
+      else if (q.includes("nước muối") && q.includes("nổi dễ")) {
+        reply = "Có! Vì nước muối có <strong>mật độ lớn hơn nước thường</strong> → lực đẩy lớn hơn.<br>" +
+                "→ Đó là lý do em nổi dễ hơn khi bơi ở biển!<br>" +
+                "→ Em hãy thử đổi chất lỏng thành 'Nước muối' trong thí nghiệm để kiểm tra!";
+      }
+      // 16. Lực đẩy có tồn tại trong không khí không?
+      else if (q.includes("lực đẩy") && q.includes("không khí")) {
+        reply = "Có! Lực đẩy cũng tồn tại trong không khí, nhưng rất nhỏ vì không khí có mật độ thấp.<br>" +
+                "→ Khinh khí cầu bay được nhờ khí nhẹ (helium) → mật độ nhỏ hơn không khí → lực đẩy > trọng lực.";
       }
 
       // Câu trả lời mặc định
