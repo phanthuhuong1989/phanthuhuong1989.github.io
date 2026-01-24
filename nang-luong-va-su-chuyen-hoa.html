@@ -110,16 +110,12 @@
     <div id="chat-header" onclick="toggleChat()">Trợ giảng ảo – Vật lý 8</div>
     <div id="chat-body">
       <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
+        • “Mục đích của thí nghiệm này là gì?”<br>
         • “Xe đạp cung cấp năng lượng gì?”<br>
-        • “Mặt trời cung cấp năng lượng gì?”<br>
-        • “Tuabin gió cung cấp năng lượng gì?”<br>
-        • “Biểu tượng E màu cam là gì?”<br>
-        • “Biểu tượng E màu xanh là gì?”<br>
-        • “Biểu tượng E màu vàng là gì?”<br>
-        • “Làm sao để nước nóng lên nhanh hơn?”<br>
-        • “Có thể thay nước bằng dầu hoặc cát không?”<br>
+        • “Biểu tượng E màu cam/xanh/vàng là gì?”<br>
+        • “Nếu thay nước bằng dầu, nóng nhanh hơn không?”<br>
         • “Tại sao ấm trà phát ra hơi?”<br>
-        • “Năng lượng có mất đi khi chuyển hóa không?”<br>
+        Hoặc hỏi: “Tôi nên làm gì tiếp theo?” để được hướng dẫn theo bước!<br>
         Hãy đặt câu hỏi nhé!</p>
     </div>
     <div id="chat-input">
@@ -149,117 +145,109 @@
       const q = question.toLowerCase();
       let reply = "";
 
-      // === PHẦN TRẢ LỜI CHUYÊN MÔN – CHỈ LIÊN QUAN ĐẾN CHUYỂN HÓA NĂNG LƯỢNG ===
+      // === TRẢ LỜI 15 CÂU HỎI THEO NHÓM ===
 
-      // 1. Xe đạp
-      if (q.includes("xe đạp") && q.includes("năng lượng")) {
+      // 🔹 NHÓM 1: MỤC ĐÍCH
+      if (q.includes("mục đích") || (q.includes("thí nghiệm") && q.includes("này") && q.includes("là gì"))) {
+        reply = "Mục đích của thí nghiệm này là:<br>" +
+                "• Quan sát các dạng năng lượng (cơ, điện, nhiệt, quang)<br>" +
+                "• Theo dõi sự chuyển hóa năng lượng qua biểu tượng E<br>" +
+                "• Rút ra kết luận về sự bảo toàn và chuyển hóa năng lượng.";
+      }
+      else if (q.includes("tìm hiểu") && q.includes("biểu tượng năng lượng") && q.includes("di chuyển")) {
+        reply = "Chúng ta muốn tìm hiểu:<br>" +
+                "• Năng lượng di chuyển từ đâu đến đâu?<br>" +
+                "• Dạng năng lượng thay đổi như thế nào khi qua mỗi thiết bị?<br>" +
+                "• Làm thế nào để kiểm soát dòng năng lượng?";
+      }
+
+      // 🔹 NHÓM 2: CƠ SỞ LÝ THUYẾT
+      else if (q.includes("xe đạp") && q.includes("cung cấp") && q.includes("năng lượng")) {
         reply = "Xe đạp cung cấp <strong>năng lượng cơ học</strong>.<br>" +
                 "→ Khi em đạp, chân tác dụng lực làm bánh xe quay → tạo ra năng lượng chuyển động.";
       }
-      // 2. Mặt trời
-      else if (q.includes("mặt trời") && q.includes("năng lượng")) {
-        reply = "Mặt trời cung cấp <strong>năng lượng quang (ánh sáng) và nhiệt</strong>.<br>" +
-                "→ Trong thí nghiệm, nó làm nóng nước trực tiếp qua bức xạ.";
+      else if (q.includes("mặt trời") && q.includes("tuabin gió") && q.includes("năng lượng")) {
+        reply = "• <strong>Mặt trời</strong>: cung cấp <strong>năng lượng quang và nhiệt</strong><br>" +
+                "• <strong>Tuabin gió</strong>: cung cấp <strong>năng lượng cơ học</strong> (do gió làm cánh quạt quay)";
       }
-      // 3. Tuabin gió
-      else if (q.includes("tuabin gió") && q.includes("năng lượng")) {
-        reply = "Tuabin gió cung cấp <strong>năng lượng cơ học</strong>.<br>" +
-                "→ Gió thổi làm cánh quạt quay → tạo ra chuyển động cơ học.";
+      else if (q.includes("biểu tượng e") && (q.includes("màu cam") || q.includes("màu xanh") || q.includes("màu vàng"))) {
+        reply = "• <strong>E màu cam</strong>: <strong>nhiệt năng</strong><br>" +
+                "• <strong>E màu xanh</strong>: <strong>điện năng</strong><br>" +
+                "• <strong>E màu vàng</strong>: <strong>quang năng (ánh sáng)</strong>";
       }
-      // 4. Biểu tượng E màu cam
-      else if (q.includes("biểu tượng e") && (q.includes("màu cam") || q.includes("cam"))) {
-        reply = "Biểu tượng <strong>E màu cam</strong> đại diện cho <strong>nhiệt năng</strong>.<br>" +
-                "→ Nó di chuyển từ nguồn nóng (bếp, mặt trời) sang vật lạnh (nước, ấm trà).";
-      }
-      // 5. Biểu tượng E màu xanh
-      else if (q.includes("biểu tượng e") && (q.includes("màu xanh") || q.includes("xanh"))) {
-        reply = "Biểu tượng <strong>E màu xanh</strong> đại diện cho <strong>điện năng</strong>.<br>" +
-                "→ Nó di chuyển từ máy phát điện đến các thiết bị tiêu thụ.";
-      }
-      // 6. Biểu tượng E màu vàng
-      else if (q.includes("biểu tượng e") && (q.includes("màu vàng") || q.includes("vàng"))) {
-        reply = "Biểu tượng <strong>E màu vàng</strong> đại diện cho <strong>quang năng (ánh sáng)</strong>.<br>" +
-                "→ Nó phát ra từ bóng đèn, mặt trời.";
-      }
-      // 7. Làm sao để nước nóng lên nhanh hơn?
-      else if (q.includes("làm sao") && q.includes("nóng lên nhanh")) {
-        reply = "Để nước nóng lên nhanh hơn, em có thể:<br>" +
-                "1. Dùng nguồn năng lượng mạnh hơn (mặt trời thay vì xe đạp)<br>" +
-                "2. Giảm khối lượng nước<br>" +
-                "3. Chọn chất lỏng có nhiệt dung riêng nhỏ (dầu thay vì nước).";
-      }
-      // 8. Thay nước bằng dầu/cát
-      else if (q.includes("thay nước") && (q.includes("dầu") || q.includes("cát"))) {
-        reply = "Em có thể thay nước bằng các chất lỏng khác!<br>" +
-                "• Chọn biểu tượng <strong>cốc</strong> ở góc dưới phải.<br>" +
-                "• Mỗi chất có khả năng hấp thụ nhiệt khác nhau → nhiệt độ tăng nhanh/chậm khác nhau!";
-      }
-      // 9. Tên thí nghiệm
-      else if (q.includes("tên thí nghiệm") || q.includes("nhiệt năng") || q.includes("đúng tên")) {
-        reply = "Thí nghiệm này không chỉ nói về 'nhiệt năng', mà là về <strong>sự chuyển hóa và truyền năng lượng</strong> giữa các dạng:<br>" +
-                "• Cơ → Điện → Nhiệt<br>" +
-                "• Ánh sáng → Điện → Nhiệt<br>" +
-                "• Hóa → Nhiệt → Cơ<br>" +
-                "→ Đây là chủ đề trọng tâm của Bài 21 – SGK KHTN 8 (Kết nối tri thức).";
-      }
-      // 10. Bắt đầu từ đâu?
-      else if (q.includes("bắt đầu") || q.includes("bắt đầu từ đâu")) {
-        reply = "Em bắt đầu bằng cách:<br>" +
-                "1. Nhấn vào biểu tượng <strong>xe đạp/mặt trời/tuabin gió</strong> ở góc dưới trái.<br>" +
-                "2. Kéo vào vùng thí nghiệm.<br>" +
-                "3. Quan sát biểu tượng E di chuyển!";
+      else if (q.includes("năng lượng") && q.includes("dạng cơ bản")) {
+        reply = "Trong thí nghiệm này, năng lượng tồn tại ở 4 dạng cơ bản:<br>" +
+                "• <strong>Cơ</strong> (xe đạp, tuabin gió)<br>" +
+                "• <strong>Điện</strong> (máy phát điện)<br>" +
+                "• <strong>Nhiệt</strong> (nước nóng, ấm trà)<br>" +
+                "• <strong>Quang</strong> (ánh sáng mặt trời, bóng đèn)";
       }
 
-      // === CÂU HỎI MỞ RỘNG TỪ HỌC SINH TÒ MÒ ===
+      // 🔹 NHÓM 3: DỰ ĐOÁN
+      else if (q.includes("thay nước") && q.includes("dầu ăn") && q.includes("nóng lên")) {
+        reply = "Dầu ăn sẽ nóng lên <strong>nhanh hơn</strong> nước.<br>" +
+                "Vì dầu có <strong>nhiệt dung riêng nhỏ hơn</strong> nước → cần ít năng lượng hơn để tăng nhiệt độ.";
+      }
+      else if (q.includes("ấm trà") && q.includes("hơi nước") && q.includes("sớm hơn")) {
+        reply = "Hơi nước sẽ xuất hiện <strong>sớm hơn</strong>.<br>" +
+                "Vì ấm trà có diện tích tiếp xúc lớn và kim loại dẫn nhiệt tốt → nhiệt truyền nhanh → nước bốc hơi sớm.";
+      }
 
-      // 11. Tại sao ấm trà phát ra hơi?
-      else if (q.includes("tại sao") && q.includes("ấm trà") && q.includes("phát ra hơi")) {
-        reply = "Vì nước trong ấm bị đun nóng → chuyển từ thể lỏng sang thể khí (hơi nước).<br>" +
-                "→ Đây là hiện tượng **bốc hơi**, xảy ra khi nhiệt độ tăng.";
+      // 🔹 NHÓM 4: QUAN SÁT
+      else if (q.includes("bật nguồn nhiệt") && q.includes("biểu tượng năng lượng") && q.includes("di chuyển")) {
+        reply = "Biểu tượng E di chuyển từ:<br>" +
+                "• <strong>Nguồn</strong> (mặt trời, bếp) → <strong>vật nhận</strong> (nước, ấm trà)<br>" +
+                "→ Màu sắc cho biết dạng năng lượng đang truyền.";
       }
-      // 12. Nếu tắt bếp, ấm trà có còn nóng không?
-      else if (q.includes("tắt bếp") && q.includes("ấm trà") && q.includes("còn nóng")) {
-        reply = "Có, nhưng **dần dần nguội đi**.<br>" +
-                "→ Vì nhiệt năng truyền từ ấm sang môi trường xung quanh (không khí) → mất nhiệt.";
+      else if (q.includes("xem rõ") && q.includes("luồng năng lượng")) {
+        reply = "Em hãy:<br>" +
+                "1. Nhấn vào ô vuông nhỏ có chữ <strong>‘Biểu tượng năng lượng’</strong> ở góc trên phải<br>" +
+                "2. Chọn <strong>‘Hiển thị biểu tượng năng lượng’</strong><br>" +
+                "→ Các mũi tên E sẽ hiện ra rõ ràng!";
       }
-      // 13. Máy phát điện hoạt động nhờ gì?
-      else if (q.includes("máy phát điện") && q.includes("hoạt động nhờ gì")) {
-        reply = "Máy phát điện hoạt động nhờ **năng lượng cơ học** (từ xe đạp, tuabin gió...).<br>" +
-                "→ Nó chuyển năng lượng cơ học thành điện năng → cung cấp cho bóng đèn → phát sáng.";
+      else if (q.includes("tắt nguồn nhiệt") && q.includes("tiếp tục di chuyển")) {
+        reply = "Không, biểu tượng năng lượng <strong>ngừng di chuyển</strong>.<br>" +
+                "Vì khi tắt nguồn, không còn năng lượng được cung cấp → quá trình truyền năng lượng dừng lại.";
       }
-      // 14. Bóng đèn sợi đốt và LED khác nhau thế nào?
-      else if (q.includes("bóng đèn") && (q.includes("sợi đốt") || q.includes("led"))) {
-        reply = "• <strong>Bóng sợi đốt</strong>: Dùng dây tóc nóng chảy → phát sáng + tỏa nhiều nhiệt.<br>" +
-                "• <strong>Bóng LED</strong>: Dùng chất bán dẫn → phát sáng ít nhiệt → tiết kiệm điện hơn.";
+
+      // 🔹 NHÓM 5: GIẢI THÍCH – KẾT LUẬN
+      else if (q.includes("ấm trà") && q.includes("phát ra hơi") && q.includes("chuyển hóa")) {
+        reply = "Vì nước trong ấm bị đun nóng → chuyển từ lỏng sang khí (hơi).<br>" +
+                "Năng lượng đã chuyển hóa:<br>" +
+                "<strong>Nhiệt năng</strong> (từ bếp) → <strong>nhiệt năng</strong> (nước) → <strong>năng lượng nội</strong> làm phân tử nước bay hơi.";
       }
-      // 15. Tại sao ánh sáng mặt trời làm nóng nước?
-      else if (q.includes("ánh sáng") && q.includes("mặt trời") && q.includes("làm nóng nước")) {
-        reply = "Vì ánh sáng mặt trời chứa **năng lượng quang**, khi chiếu vào nước → chuyển thành **nhiệt năng** → làm nóng nước.<br>" +
-                "→ Đây là nguyên lý của **bình nước nóng năng lượng mặt trời**!";
+      else if (q.includes("thay nước") && (q.includes("cát") || q.includes("dầu")) && q.includes("vai trò")) {
+        reply = "Có thể thay bằng cát hoặc dầu!<br>" +
+                "→ Điều này giúp em hiểu: <strong>mỗi vật liệu hấp thụ và truyền nhiệt khác nhau</strong> → ảnh hưởng đến tốc độ nóng lên.";
       }
-      // 16. Năng lượng có mất đi khi chuyển hóa không?
-      else if (q.includes("năng lượng") && q.includes("mất đi") && q.includes("chuyển hóa")) {
-        reply = "Không, năng lượng **không mất đi**, chỉ **chuyển từ dạng này sang dạng khác**.<br>" +
-                "→ Đây là **định luật bảo toàn năng lượng**!<br>" +
-                "→ Ví dụ: điện → ánh sáng + nhiệt → không biến mất, chỉ phân bố lại.";
+      else if (q.includes("năng lượng") && q.includes("tự mất đi") && q.includes("chuyển hóa")) {
+        reply = "Không, năng lượng <strong>không tự mất đi</strong>.<br>" +
+                "→ Nó chỉ <strong>chuyển từ dạng này sang dạng khác</strong> hoặc <strong>truyền từ vật này sang vật khác</strong>.<br>" +
+                "→ Đây là <strong>định luật bảo toàn năng lượng</strong>!";
       }
-      // 17. Tại sao dùng nhiều thiết bị thì điện yếu?
-      else if (q.includes("dùng nhiều thiết bị") && q.includes("điện yếu")) {
-        reply = "Vì tổng công suất tiêu thụ vượt quá khả năng cung cấp của nguồn.<br>" +
-                "→ Dòng điện giảm → các thiết bị hoạt động kém hiệu quả.<br>" +
-                "→ Trong nhà, điều này gọi là 'quá tải' — rất nguy hiểm!";
+      else if (q.includes("kết luận") && q.includes("chuyển hóa") && q.includes("bảo toàn năng lượng")) {
+        reply = "Kết luận:<br>" +
+                "• Năng lượng có thể chuyển hóa giữa các dạng: cơ ↔ điện ↔ nhiệt ↔ quang<br>" +
+                "• Tổng năng lượng luôn được bảo toàn<br>" +
+                "• Hiểu điều này giúp ta sử dụng năng lượng hiệu quả và tiết kiệm.";
       }
-      // 18. Làm sao biết năng lượng đã truyền?
-      else if (q.includes("làm sao") && q.includes("biết") && q.includes("năng lượng") && q.includes("truyền")) {
-        reply = "Em hãy quan sát biểu tượng <strong>E</strong> di chuyển từ nguồn đến thiết bị.<br>" +
-                "→ Nếu thiết bị hoạt động (sáng, nóng), nghĩa là năng lượng đã truyền đến!";
+
+      // 🔹 HƯỚNG DẪN THEO BƯỚC
+      else if (q.includes("nên làm gì") || q.includes("tiếp theo") || q.includes("bắt đầu")) {
+        reply = "<strong>Gợi ý theo bước:</strong><br>" +
+                "1. <strong>Mục đích</strong>: Hỏi ‘Mục đích thí nghiệm là gì?’<br>" +
+                "2. <strong>Lý thuyết</strong>: Hỏi ‘Biểu tượng E màu cam là gì?’<br>" +
+                "3. <strong>Dự đoán</strong>: Thử hỏi ‘Nếu thay nước bằng dầu, nóng nhanh hơn không?’<br>" +
+                "4. <strong>Quan sát</strong>: Sau khi bật nguồn, hỏi ‘Biểu tượng E di chuyển từ đâu đến đâu?’<br>" +
+                "5. <strong>Kết luận</strong>: Cuối cùng, hỏi ‘Năng lượng có tự mất đi không?’";
       }
 
       // Câu trả lời mặc định
       else {
-        reply = "Câu hỏi rất hay! Em hãy thử hỏi lại bằng cách:<br>" +
-                "• Gõ đúng từ khóa: 'xe đạp', 'mặt trời', 'E màu cam'<br>" +
-                "• Hoặc hỏi từng câu riêng lẻ.<br>" +
+        reply = "Câu hỏi rất hay! Em hãy thử hỏi:<br>" +
+                "• ‘Xe đạp cung cấp năng lượng gì?’<br>" +
+                "• ‘Tại sao ấm trà phát ra hơi?’<br>" +
+                "• ‘Năng lượng có tự mất đi không?’<br>" +
                 "→ Trợ giảng luôn sẵn sàng giúp em!";
       }
 
