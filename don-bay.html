@@ -142,10 +142,13 @@
       const chatBody = document.getElementById("chat-body");
       chatBody.innerHTML += `<p><strong>Em:</strong> ${question}</p>`;
       
+      // Loại bỏ dấu câu
       const q = question.toLowerCase().replace(/[?.,]/g, '');
       let reply = "";
 
-      // === NHÓM 1: MỤC ĐÍCH ===
+      // === ƯU TIÊN CÂU HỎI DÀI, CỤ THỂ TRƯỚC ===
+
+      // 🔹 NHÓM 1: MỤC ĐÍCH
       if (q.includes("mục đích") && q.includes("thí nghiệm")) {
         reply = "Mục đích của thí nghiệm này là:<br>" +
                 "• Tìm hiểu cấu tạo và nguyên lý hoạt động của đòn bẩy<br>" +
@@ -159,28 +162,28 @@
                 "• Ứng dụng của đòn bẩy trong đời sống.";
       }
 
-      // === NHÓM 2: CƠ SỞ LÝ THUYẾT ===
-      else if (q.includes("điểm tựa")) {
-        reply = "<strong>Điểm tựa</strong> là điểm mà đòn bẩy tựa vào để quay.<br>" +
-                "→ Vai trò: làm trục quay, giúp khuếch đại lực hoặc thay đổi hướng tác dụng.";
-      }
-      else if (q.includes("cánh tay đòn") || q.includes("tính cánh tay đòn")) {
-        reply = "<strong>Cánh tay đòn</strong> được tính từ <strong>điểm tựa</strong> đến <strong>vị trí đặt lực</strong>.<br>" +
-                "→ Trong thí nghiệm, nó là số ô vuông từ tâm đến vị trí đặt vật.";
-      }
-      else if ((q.includes("lực tác dụng") || q.includes("lực cản")) && q.includes("ví dụ")) {
-        reply = "• <strong>Lực tác dụng</strong>: lực do người tạo ra (ví dụ: tay đẩy cái bẩy)<br>" +
-                "• <strong>Lực cản</strong>: trọng lượng vật cần nâng (ví dụ: hòn đá)";
-      }
+      // 🔹 NHÓM 2: CƠ SỞ LÝ THUYẾT
       else if (q.includes("ba loại đòn bẩy") || (q.includes("kể tên") && q.includes("đòn bẩy"))) {
         reply = "Ba loại đòn bẩy:<br>" +
                 "1. <strong>Loại 1</strong>: điểm tựa ở giữa (cái bẩy)<br>" +
                 "2. <strong>Loại 2</strong>: lực cản ở giữa (xe cút kít)<br>" +
                 "3. <strong>Loại 3</strong>: lực tác dụng ở giữa (nhíp, cần câu)";
       }
+      else if ((q.includes("lực tác dụng") || q.includes("lực cản")) && q.includes("ví dụ")) {
+        reply = "• <strong>Lực tác dụng</strong>: lực do người tạo ra (ví dụ: tay đẩy cái bẩy)<br>" +
+                "• <strong>Lực cản</strong>: trọng lượng vật cần nâng (ví dụ: hòn đá)";
+      }
+      else if (q.includes("cánh tay đòn") && q.includes("tính")) {
+        reply = "<strong>Cánh tay đòn</strong> được tính từ <strong>điểm tựa</strong> đến <strong>vị trí đặt lực</strong>.<br>" +
+                "→ Trong thí nghiệm, nó là số ô vuông từ tâm đến vị trí đặt vật.";
+      }
+      else if (q.includes("điểm tựa")) {
+        reply = "<strong>Điểm tựa</strong> là điểm mà đòn bẩy tựa vào để quay.<br>" +
+                "→ Vai trò: làm trục quay, giúp khuếch đại lực hoặc thay đổi hướng tác dụng.";
+      }
 
-      // === NHÓM 3: DỰ ĐOÁN ===
-      else if (q.includes("xa điểm tựa") && q.includes("lực")) {
+      // 🔹 NHÓM 3: DỰ ĐOÁN
+      else if (q.includes("đặt vật xa điểm tựa") && q.includes("lực lớn hay nhỏ")) {
         reply = "Cần lực <strong>nhỏ hơn</strong>.<br>" +
                 "Vì cánh tay đòn lớn hơn → mô-men lực lớn hơn → dễ cân bằng với vật nặng.";
       }
@@ -189,12 +192,12 @@
                 "Vì mô-men lực = lực × cánh tay đòn → nếu cánh tay đòn khác nhau → mô-men khác nhau → thanh nghiêng.";
       }
 
-      // === NHÓM 4: QUAN SÁT ===
-      else if (q.includes("kéo vật") && q.includes("nghiêng")) {
+      // 🔹 NHÓM 4: QUAN SÁT
+      else if (q.includes("kéo vật") && q.includes("nghiêng về phía nào")) {
         reply = "Đòn bẩy nghiêng về <strong>phía vật nặng</strong>.<br>" +
                 "Vì mô-men lực phía đó tăng lên → mất cân bằng.";
       }
-      else if (q.includes("đo cánh tay đòn")) {
+      else if (q.includes("đo") && q.includes("cánh tay đòn")) {
         reply = "Em đếm số <strong>ô vuông</strong> từ điểm tựa (tâm) đến vị trí đặt vật.<br>" +
                 "→ Mỗi ô = 1 đơn vị độ dài → đó chính là cánh tay đòn.";
       }
@@ -204,7 +207,7 @@
                 "→ Lực càng lớn thì cánh tay đòn càng nhỏ, và ngược lại.";
       }
 
-      // === NHÓM 5: GIẢI THÍCH – KẾT LUẬN ===
+      // 🔹 NHÓM 5: GIẢI THÍCH – KẾT LUẬN
       else if (q.includes("xa điểm tựa") && q.includes("dễ nâng")) {
         reply = "Vì khi xa điểm tựa, <strong>cánh tay đòn lớn hơn</strong>.<br>" +
                 "→ Với cùng một lực, mô-men lực (F × d) lớn hơn → dễ cân bằng hoặc nâng vật nặng.";
@@ -228,7 +231,7 @@
                 "• Hiểu điều này giúp ta sử dụng đòn bẩy hiệu quả trong đời sống.";
       }
 
-      // === HƯỚNG DẪN THEO BƯỚC ===
+      // 🔹 HƯỚNG DẪN THEO BƯỚC
       else if (q.includes("nên làm gì") || q.includes("tiếp theo") || q.includes("bắt đầu")) {
         reply = "<strong>Gợi ý theo bước:</strong><br>" +
                 "1. Hỏi: ‘Mục đích thí nghiệm là gì?’<br>" +
@@ -238,7 +241,7 @@
                 "5. Kết luận: ‘Điều kiện cân bằng là gì?’";
       }
 
-      // === MẶC ĐỊNH ===
+      // 🔹 MẶC ĐỊNH
       else {
         reply = "Câu hỏi rất hay! Em hãy thử hỏi:<br>" +
                 "• ‘Điểm tựa là gì?’<br>" +
