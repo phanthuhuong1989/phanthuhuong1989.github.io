@@ -113,7 +113,7 @@
         • “Mục đích thí nghiệm là gì?”<br>
         • “Chiều dòng điện quy ước thế nào?”<br>
         • “Ampe kế và vôn kế mắc ra sao?”<br>
-        • “Làm sao đo U giữa hai đầu điện trở?”<br>
+        • “Làm sao đo U giữa hai đầu bóng đèn?”<br>
         • “Tại sao đèn mờ khi mắc nối tiếp?”<br>
         Hoặc hỏi: “Tôi nên làm gì tiếp theo?”<br>
         Hãy đặt câu hỏi nhé!</p>
@@ -202,14 +202,21 @@
         reply = "• <strong>Ampe kế</strong>: số chỉ <strong>tăng</strong> khi chuyển sang mạch song song.<br>" +
                 "• <strong>Vôn kế</strong> (đo mỗi bóng): số chỉ <strong>giảm</strong> trong mạch nối tiếp, <strong>giữ nguyên</strong> trong mạch song song.";
       }
-      else if (q.includes("đo") && q.includes("hiệu điện thế") && q.includes("hai đầu") && q.includes("bóng đèn")) {
+      // 🔥 SỬA LỖI: Câu hỏi "Làm sao đo U giữa hai đầu bóng đèn?"
+      else if ((q.includes("đo") || q.includes("do")) && 
+               (q.includes("u") || q.includes("hiệu điện thế")) && 
+               (q.includes("hai đầu") || q.includes("giữa hai đầu")) && 
+               (q.includes("bóng đèn") || q.includes("bong den"))) {
         reply = "Mắc <strong>vôn kế song song</strong> với bóng đèn cần đo.<br>" +
                 "→ Đảm bảo mạch kín và nguồn điện hoạt động.<br>" +
                 "→ Đọc giá trị trên vôn kế — đó chính là U!";
       }
 
       // 🔹 NHÓM 5: GIẢI THÍCH – KẾT LUẬN
-      else if (q.includes("tại sao") && q.includes("bóng đèn") && q.includes("sáng mờ") && q.includes("nối tiếp")) {
+      // 🔥 SỬA LỖI: Câu hỏi "Tại sao đèn mờ khi mắc nối tiếp?"
+      else if (q.includes("tại sao") && 
+               (q.includes("đèn mờ") || q.includes("bóng đèn mờ")) && 
+               q.includes("nối tiếp")) {
         reply = "Vì khi mắc nối tiếp:<br>" +
                 "• Tổng điện trở tăng → dòng điện giảm<br>" +
                 "• Hiệu điện thế chia đều cho các bóng → mỗi bóng nhận ít năng lượng hơn → sáng mờ.";
