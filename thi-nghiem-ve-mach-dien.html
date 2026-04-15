@@ -14,69 +14,35 @@
         }
         .container { max-width: 1400px; margin: 0 auto; }
         header {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: white; padding: 20px; border-radius: 10px;
+            margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         header h1 { color: #333; font-size: 28px; margin-bottom: 10px; }
         header p { color: #666; font-size: 16px; }
         .experiment-container {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            min-height: 700px;
+            background: white; border-radius: 10px; padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); min-height: 700px;
         }
         .simulation-frame {
-            width: 100%;
-            height: 700px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
+            width: 100%; height: 700px; border: 2px solid #ddd;
+            border-radius: 8px; overflow: hidden;
         }
         .simulation-frame iframe { width: 100%; height: 100%; border: none; }
 
         /* Chatbot Styles */
-        #chatbot-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
+        #chatbot-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
         #chatbot-toggle {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
+            color: white; border: none; padding: 15px 25px; border-radius: 50px;
+            font-size: 16px; font-weight: bold; cursor: pointer;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;
         }
-        #chatbot-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
+        #chatbot-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); }
         #chatbot-container {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 450px;
-            height: 600px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            animation: slideIn 0.3s ease;
+            position: fixed; bottom: 100px; right: 30px; width: 450px; height: 600px;
+            background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none; flex-direction: column; overflow: hidden; animation: slideIn 0.3s ease;
         }
         @keyframes slideIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -84,33 +50,17 @@
         }
         .chatbot-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center;
         }
         .chatbot-header h3 { font-size: 18px; margin: 0; }
         .chatbot-header button {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.2); border: none; color: white;
+            width: 35px; height: 35px; border-radius: 50%; cursor: pointer;
+            font-size: 18px; transition: all 0.3s ease;
         }
-        .chatbot-header button:hover {
-            background: rgba(255,255,255,0.3);
-            transform: rotate(90deg);
-        }
+        .chatbot-header button:hover { background: rgba(255,255,255,0.3); transform: rotate(90deg); }
         #chatbot-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background: #f8f9fa;
+            flex: 1; overflow-y: auto; padding: 20px; background: #f8f9fa;
         }
         .message { margin-bottom: 15px; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn {
@@ -118,28 +68,22 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .ai-message {
-            background: white;
-            padding: 15px;
-            border-radius: 10px 10px 10px 0;
-            border-left: 4px solid #667eea;
-            color: #333;
-            line-height: 1.6;
+            background: white; padding: 15px; border-radius: 10px 10px 10px 0;
+            border-left: 4px solid #667eea; color: #333; line-height: 1.6;
         }
         .user-message {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 15px;
-            border-radius: 10px 10px 0 10px;
-            margin-left: auto;
-            max-width: 80%;
-            color: white;
-            line-height: 1.6;
+            padding: 15px; border-radius: 10px 10px 0 10px; margin-left: auto;
+            max-width: 80%; color: white; line-height: 1.6;
         }
+        
+        /* ✅ SỬA LỖI HIỂN THỊ: Hiển thị đầy đủ 13 câu, không cắt chữ */
         .suggestion-buttons {
             display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
+            flex-direction: column; /* Xếp dọc để có đủ chỗ hiện chữ */
+            gap: 8px;
             margin-top: 10px;
-            max-height: 200px;
+            max-height: 450px; /* Đủ cao để hiện hết 13 câu, nếu dài hơn sẽ cuộn nhẹ */
             overflow-y: auto;
             padding: 5px;
         }
@@ -147,70 +91,44 @@
             background: #f0f0f0;
             border: 1px solid #667eea;
             color: #667eea;
-            padding: 6px 10px;
-            border-radius: 15px;
+            padding: 10px 14px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 13px;
             transition: all 0.3s ease;
             text-align: left;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 200px;
+            white-space: normal; /* Cho phép xuống dòng, KHÔNG cắt chữ */
+            word-wrap: break-word;
+            width: 100%; /* Chiếm toàn bộ chiều ngang */
+            box-sizing: border-box;
+            line-height: 1.4;
         }
         .suggestion-buttons button:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
+            background: #667eea; color: white; transform: translateY(-2px);
         }
+        
         .chatbot-input {
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            gap: 10px;
+            padding: 20px; background: white; border-top: 1px solid #e0e0e0; display: flex; gap: 10px;
         }
         #user-input {
-            flex: 1;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 25px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s ease;
+            flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 25px;
+            font-size: 14px; outline: none; transition: border-color 0.3s ease;
         }
         #user-input:focus { border-color: #667eea; }
         #user-input::placeholder { color: #999; }
         .send-button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            color: white; border: none; padding: 12px 25px; border-radius: 25px;
+            cursor: pointer; font-weight: bold; transition: all 0.3s ease;
         }
-        .send-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
+        .send-button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); }
         .typing-indicator {
-            display: none;
-            padding: 15px;
-            background: white;
-            border-radius: 10px 10px 10px 0;
-            border-left: 4px solid #667eea;
-            margin-bottom: 15px;
+            display: none; padding: 15px; background: white;
+            border-radius: 10px 10px 10px 0; border-left: 4px solid #667eea; margin-bottom: 15px;
         }
         .typing-indicator span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #667eea;
-            border-radius: 50%;
-            margin: 0 2px;
-            animation: typing 1.4s infinite;
+            display: inline-block; width: 8px; height: 8px; background: #667eea;
+            border-radius: 50%; margin: 0 2px; animation: typing 1.4s infinite;
         }
         .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
         .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
@@ -219,20 +137,12 @@
             30% { transform: translateY(-10px); }
         }
         @media (max-width: 768px) {
-            #chatbot-container {
-                width: 95%;
-                right: 2.5%;
-                height: 80vh;
-            }
+            #chatbot-container { width: 95%; right: 2.5%; height: 85vh; }
             #chatbot-widget { bottom: 20px; right: 20px; }
-            .suggestion-buttons button { max-width: 150px; font-size: 10px; padding: 5px 8px; }
         }
         .welcome-message {
-            background: #e8f5e9;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border-left: 4px solid #4caf50;
+            background: #e8f5e9; padding: 15px; border-radius: 10px;
+            margin-bottom: 15px; border-left: 4px solid #4caf50;
         }
         .welcome-message strong { color: #2e7d32; }
     </style>
@@ -266,10 +176,10 @@
                     </div>
                     <strong>Em có thể hỏi:</strong>
                     <div class="suggestion-buttons">
-                        <button onclick="askQuestion(1)">1. Mục đích thí nghiệm?</button>
-                        <button onclick="askQuestion(3)">3. Chiều dòng điện?</button>
-                        <button onclick="askQuestion(4)">4. Cách mắc ampe kế?</button>
-                        <button onclick="askQuestion(5)">5. Mạch nối tiếp/song song?</button>
+                        <button onclick="askQuestion(1)">1. Em hãy nêu mục đích của thí nghiệm này?</button>
+                        <button onclick="askQuestion(3)">3. Chiều dòng điện quy ước được quy định như thế nào?</button>
+                        <button onclick="askQuestion(4)">4. Ampe kế và vôn kế được mắc như thế nào trong mạch điện?</button>
+                        <button onclick="askQuestion(5)">5. Thế nào là mạch nối tiếp? Thế nào là mạch song song?</button>
                     </div>
                     <p style="margin-top: 10px; font-size: 13px; color: #666;">Hoặc nhập câu hỏi của em ở dưới!</p>
                 </div>
@@ -316,7 +226,6 @@
         };
 
         const initialSuggestions = [1, 3, 4, 5];
-        // ✅ Cập nhật: Khi HS hỏi ngoài danh sách, gợi ý TẤT CẢ 13 câu
         const fallbackSuggestions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
         function toggleChatbot() {
@@ -379,12 +288,10 @@
             if (matchedNumber) {
                 return answers[matchedNumber];
             } else {
-                // ✅ Hiển thị đúng message thầy/cô yêu cầu + tất cả 13 câu hỏi
                 let suggestionHTML = '';
                 fallbackSuggestions.forEach(num => {
                     const question = predefinedQuestions[num];
-                    const shortQuestion = question.length > 40 ? question.substring(0, 40) + '...' : question;
-                    suggestionHTML += `<button onclick="askQuestion(${num})">${num}. ${shortQuestion}</button>`;
+                    suggestionHTML += `<button onclick="askQuestion(${num})">${num}. ${question}</button>`;
                 });
                 return `Cảm ơn em, câu hỏi rất hay. Em có thể đặt câu hỏi như:<br><br><div class="suggestion-buttons">${suggestionHTML}</div>`;
             }
