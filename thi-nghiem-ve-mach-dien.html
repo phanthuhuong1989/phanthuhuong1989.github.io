@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thí nghiệm ảo: Mạch điện – Vật lý 8</title>
+  <title>Thí nghiệm ảo: Đo hiệu điện thế và cường độ dòng điện – Vật lý 8</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -93,7 +93,7 @@
 <body>
 
   <div class="container">
-    <h2>Thí nghiệm: Mạch điện – Đo U và I</h2>
+    <h2>Thí nghiệm: Đo hiệu điện thế và cường độ dòng điện</h2>
     <iframe 
       class="phet-frame"
       src="https://phet.colorado.edu/sims/html/circuit-construction-kit-dc-virtual-lab/latest/circuit-construction-kit-dc-virtual-lab_vi.html"
@@ -110,12 +110,12 @@
     <div id="chat-header" onclick="toggleChat()">Trợ giảng ảo – Vật lý 8</div>
     <div id="chat-body">
       <p><strong>AI:</strong> Chào em! Em có thể hỏi:<br>
-        • “Mục đích của thí nghiệm này là gì?”<br>
+        • “Mục đích thí nghiệm là gì?”<br>
         • “Chiều dòng điện quy ước thế nào?”<br>
         • “Ampe kế và vôn kế mắc ra sao?”<br>
-        • “Làm sao đo U giữa hai đầu bóng đèn?”<br>
+        • “Làm sao đo U giữa hai đầu điện trở?”<br>
         • “Tại sao đèn mờ khi mắc nối tiếp?”<br>
-        Hoặc hỏi: “Tôi nên làm gì tiếp theo?” để được hướng dẫn theo bước!<br>
+        Hoặc hỏi: “Tôi nên làm gì tiếp theo?”<br>
         Hãy đặt câu hỏi nhé!</p>
     </div>
     <div id="chat-input">
@@ -142,13 +142,14 @@
       const chatBody = document.getElementById("chat-body");
       chatBody.innerHTML += `<p><strong>Em:</strong> ${question}</p>`;
       
-      const q = question.toLowerCase();
+      // Loại bỏ dấu câu, chuyển về chữ thường
+      const q = question.toLowerCase().replace(/[?.,]/g, '');
       let reply = "";
 
-      // === TRẢ LỜI 15 CÂU HỎI THEO NHÓM ===
+      // === ƯU TIÊN CÂU HỎI DÀI, CỤ THỂ TRƯỚC ===
 
       // 🔹 NHÓM 1: MỤC ĐÍCH
-      if (q.includes("mục đích") || (q.includes("thí nghiệm") && q.includes("này") && q.includes("là gì"))) {
+      if (q.includes("mục đích") && q.includes("thí nghiệm")) {
         reply = "Mục đích của thí nghiệm này là:<br>" +
                 "• Tìm hiểu cách đo hiệu điện thế (U) và cường độ dòng điện (I)<br>" +
                 "• So sánh đặc điểm của mạch nối tiếp và mạch song song<br>" +
@@ -239,7 +240,7 @@
                 "1. <strong>Mục đích</strong>: Hỏi ‘Mục đích thí nghiệm là gì?’<br>" +
                 "2. <strong>Lý thuyết</strong>: Hỏi ‘Chiều dòng điện quy ước thế nào?’<br>" +
                 "3. <strong>Dự đoán</strong>: Thử hỏi ‘Nếu mắc thêm bóng nối tiếp, đèn sẽ thế nào?’<br>" +
-                "4. <<strong>Quan sát</strong>: Sau khi lắp mạch, hỏi ‘Số chỉ ampe kế thay đổi ra sao?’<br>" +
+                "4. <strong>Quan sát</strong>: Sau khi lắp mạch, hỏi ‘Số chỉ ampe kế thay đổi ra sao?’<br>" +
                 "5. <strong>Kết luận</strong>: Cuối cùng, hỏi ‘So sánh ưu nhược điểm mạch nối tiếp và song song?’";
       }
 
