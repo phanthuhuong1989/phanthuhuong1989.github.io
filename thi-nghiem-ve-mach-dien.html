@@ -5,24 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thí nghiệm: Mạch điện</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
+        .container { max-width: 1400px; margin: 0 auto; }
         header {
             background: white;
             padding: 20px;
@@ -30,27 +20,15 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
-        header h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            color: #666;
-            font-size: 16px;
-        }
-
+        header h1 { color: #333; font-size: 28px; margin-bottom: 10px; }
+        header p { color: #666; font-size: 16px; }
         .experiment-container {
             background: white;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: relative;
             min-height: 700px;
         }
-
         .simulation-frame {
             width: 100%;
             height: 700px;
@@ -58,12 +36,7 @@
             border-radius: 8px;
             overflow: hidden;
         }
-
-        .simulation-frame iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+        .simulation-frame iframe { width: 100%; height: 100%; border: none; }
 
         /* Chatbot Styles */
         #chatbot-widget {
@@ -72,7 +45,6 @@
             right: 30px;
             z-index: 1000;
         }
-
         #chatbot-toggle {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -88,12 +60,10 @@
             align-items: center;
             gap: 10px;
         }
-
         #chatbot-toggle:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
-
         #chatbot-container {
             position: fixed;
             bottom: 100px;
@@ -108,18 +78,10 @@
             overflow: hidden;
             animation: slideIn 0.3s ease;
         }
-
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         .chatbot-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -128,12 +90,7 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .chatbot-header h3 {
-            font-size: 18px;
-            margin: 0;
-        }
-
+        .chatbot-header h3 { font-size: 18px; margin: 0; }
         .chatbot-header button {
             background: rgba(255,255,255,0.2);
             border: none;
@@ -145,29 +102,21 @@
             font-size: 18px;
             transition: all 0.3s ease;
         }
-
         .chatbot-header button:hover {
             background: rgba(255,255,255,0.3);
             transform: rotate(90deg);
         }
-
         #chatbot-messages {
             flex: 1;
             overflow-y: auto;
             padding: 20px;
             background: #f8f9fa;
         }
-
-        .message {
-            margin-bottom: 15px;
-            animation: fadeIn 0.3s ease;
-        }
-
+        .message { margin-bottom: 15px; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .ai-message {
             background: white;
             padding: 15px;
@@ -176,7 +125,6 @@
             color: #333;
             line-height: 1.6;
         }
-
         .user-message {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 15px;
@@ -186,32 +134,35 @@
             color: white;
             line-height: 1.6;
         }
-
         .suggestion-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
             margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 5px;
         }
-
         .suggestion-buttons button {
             background: #f0f0f0;
-            border: 2px solid #667eea;
+            border: 1px solid #667eea;
             color: #667eea;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 6px 10px;
+            border-radius: 15px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 11px;
             transition: all 0.3s ease;
             text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
         }
-
         .suggestion-buttons button:hover {
             background: #667eea;
             color: white;
             transform: translateY(-2px);
         }
-
         .chatbot-input {
             padding: 20px;
             background: white;
@@ -219,7 +170,6 @@
             display: flex;
             gap: 10px;
         }
-
         #user-input {
             flex: 1;
             padding: 12px 15px;
@@ -229,15 +179,8 @@
             outline: none;
             transition: border-color 0.3s ease;
         }
-
-        #user-input:focus {
-            border-color: #667eea;
-        }
-
-        #user-input::placeholder {
-            color: #999;
-        }
-
+        #user-input:focus { border-color: #667eea; }
+        #user-input::placeholder { color: #999; }
         .send-button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -248,12 +191,10 @@
             font-weight: bold;
             transition: all 0.3s ease;
         }
-
         .send-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
-
         .typing-indicator {
             display: none;
             padding: 15px;
@@ -262,7 +203,6 @@
             border-left: 4px solid #667eea;
             margin-bottom: 15px;
         }
-
         .typing-indicator span {
             display: inline-block;
             width: 8px;
@@ -272,29 +212,21 @@
             margin: 0 2px;
             animation: typing 1.4s infinite;
         }
-
         .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
         .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-
         @keyframes typing {
             0%, 60%, 100% { transform: translateY(0); }
             30% { transform: translateY(-10px); }
         }
-
-        /* Responsive */
         @media (max-width: 768px) {
             #chatbot-container {
-                width: 90%;
-                right: 5%;
+                width: 95%;
+                right: 2.5%;
                 height: 80vh;
             }
-
-            #chatbot-widget {
-                bottom: 20px;
-                right: 20px;
-            }
+            #chatbot-widget { bottom: 20px; right: 20px; }
+            .suggestion-buttons button { max-width: 150px; font-size: 10px; padding: 5px 8px; }
         }
-
         .welcome-message {
             background: #e8f5e9;
             padding: 15px;
@@ -302,10 +234,7 @@
             margin-bottom: 15px;
             border-left: 4px solid #4caf50;
         }
-
-        .welcome-message strong {
-            color: #2e7d32;
-        }
+        .welcome-message strong { color: #2e7d32; }
     </style>
 </head>
 <body>
@@ -314,29 +243,21 @@
             <h1>🔬 Thí nghiệm: Mạch điện</h1>
             <p>Khám phá mạch nối tiếp và mạch song song</p>
         </header>
-
         <div class="experiment-container">
             <div class="simulation-frame">
-                <iframe 
-                    src="https://phet.colorado.edu/sims/html/circuit-construction-kit-ac-virtual-lab/latest/circuit-construction-kit-ac-virtual-lab_all.html" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://phet.colorado.edu/sims/html/circuit-construction-kit-ac-virtual-lab/latest/circuit-construction-kit-ac-virtual-lab_all.html" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <!-- Chatbot Widget -->
     <div id="chatbot-widget">
-        <button id="chatbot-toggle" onclick="toggleChatbot()">
-            💬 Hỏi trợ giảng AI
-        </button>
-        
+        <button id="chatbot-toggle" onclick="toggleChatbot()">💬 Hỏi trợ giảng AI</button>
         <div id="chatbot-container">
             <div class="chatbot-header">
                 <h3>🤖 Trợ giảng ảo – Mạch điện</h3>
                 <button onclick="toggleChatbot()">✕</button>
             </div>
-            
             <div id="chatbot-messages">
                 <div class="ai-message">
                     <div class="welcome-message">
@@ -353,25 +274,15 @@
                     <p style="margin-top: 10px; font-size: 13px; color: #666;">Hoặc nhập câu hỏi của em ở dưới!</p>
                 </div>
             </div>
-
-            <div class="typing-indicator" id="typing-indicator">
-                <span></span><span></span><span></span>
-            </div>
-            
+            <div class="typing-indicator" id="typing-indicator"><span></span><span></span><span></span></div>
             <div class="chatbot-input">
-                <input 
-                    type="text" 
-                    id="user-input" 
-                    placeholder="Nhập câu hỏi của em..." 
-                    onkeypress="handleKeyPress(event)"
-                />
+                <input type="text" id="user-input" placeholder="Nhập câu hỏi của em..." onkeypress="handleKeyPress(event)"/>
                 <button class="send-button" onclick="sendMessage()">Gửi</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Database of questions and answers
         const predefinedQuestions = {
             1: "Em hãy nêu mục đích của thí nghiệm này?",
             2: "Chúng ta muốn tìm hiểu điều gì khi thao tác với mạch điện trong mô phỏng này?",
@@ -390,43 +301,27 @@
 
         const answers = {
             1: "🎯 <strong>Mục đích của thí nghiệm:</strong><br><br>Mục đích của thí nghiệm là giúp em hiểu về:<br>• Cách mắc mạch điện <strong>nối tiếp</strong> và <strong>song song</strong><br>• Quan sát sự thay đổi của <strong>cường độ dòng điện (I)</strong> và <strong>hiệu điện thế (U)</strong> trong các loại mạch khác nhau<br>• Rút ra được các <strong>kiến thức cơ bản</strong> về mạch điện<br>• Hiểu cách sử dụng <strong>ampe kế</strong> và <strong>vôn kế</strong> trong thực tế",
-            
             2: "🔍 <strong>Nội dung tìm hiểu:</strong><br><br>Chúng ta muốn tìm hiểu về:<br>• Mối quan hệ giữa <strong>cường độ dòng điện (I)</strong>, <strong>hiệu điện thế (U)</strong> và <strong>điện trở (R)</strong><br>• Cách mắc <strong>ampe kế</strong> (nối tiếp) và <strong>vôn kế</strong> (song song)<br>• Sự khác biệt giữa <strong>mạch nối tiếp</strong> và <strong>mạch song song</strong><br>• Ảnh hưởng của cách mắc mạch đến <strong>độ sáng bóng đèn</strong>",
-            
             3: "⚡ <strong>Chiều dòng điện quy ước:</strong><br><br>Chiều dòng điện quy ước là chiều từ <strong>cực dương (+)</strong> của nguồn điện, qua dây dẫn và các thiết bị điện, đến <strong>cực âm (-)</strong> của nguồn điện.<br><br>💡 <strong>Lưu ý:</strong> Đây là quy ước được sử dụng phổ biến trong vật lý, mặc dù thực tế <strong>electron</strong> di chuyển theo chiều ngược lại (từ âm sang dương).",
-            
             4: "📊 <strong>Cách mắc dụng cụ đo:</strong><br><br>• <strong>Ampe kế (A):</strong> Mắc <strong>nối tiếp</strong> với đoạn mạch cần đo cường độ dòng điện<br>  → Vì ampe kế có điện trở rất nhỏ<br><br>• <strong>Vôn kế (V):</strong> Mắc <strong>song song</strong> với đoạn mạch cần đo hiệu điện thế<br>  → Vì vôn kế có điện trở rất lớn<br><br>⚠️ <strong>Chú ý:</strong> Mắc sai sẽ làm hỏng dụng cụ hoặc cho kết quả sai!",
-            
             5: "🔌 <strong>Phân biệt mạch điện:</strong><br><br><strong>Mạch nối tiếp:</strong><br>• Các thiết bị mắc <strong>liên tiếp</strong> nhau<br>• Chỉ có <strong>một đường đi</strong> duy nhất cho dòng điện<br>• Nếu một bóng đèn đứt → <strong>toàn bộ mạch ngắt</strong><br><br><strong>Mạch song song:</strong><br>• Các thiết bị mắc thành <strong>nhiều nhánh riêng</strong><br>• Dòng điện có <strong>nhiều đường đi</strong> khác nhau<br>• Nếu một bóng đèn đứt → <strong>các bóng khác vẫn sáng</strong>",
-            
             6: "💡 <strong>Dự đoán:</strong> Độ sáng sẽ <strong>giảm</strong> (sáng yếu hơn)<br><br><strong>Giải thích:</strong><br>• Khi mắc nối tiếp thêm bóng đèn → điện trở tổng <strong>tăng</strong><br>• Theo định luật Ohm: <strong>I = U/R</strong><br>• Khi R tăng mà U không đổi → <strong>I giảm</strong><br>• Dòng điện yếu hơn → công suất <strong>P = I²R</strong> giảm<br>→ Bóng đèn <strong>sáng yếu đi</strong>",
-            
             7: "📈 <strong>Dự đoán:</strong> Cường độ dòng điện qua mạch chính sẽ <strong>tăng</strong><br><br><strong>Giải thích:</strong><br>• Trong mạch song song, điện trở tương đương <strong>giảm</strong><br>• Công thức: <strong>1/Rt = 1/R₁ + 1/R₂ + ...</strong><br>• Rt nhỏ hơn điện trở của từng nhánh<br>• Theo <strong>I = U/R</strong>: khi R giảm → <strong>I tăng</strong><br>→ Dòng điện tổng trong mạch chính <strong>tăng lên</strong>",
-            
             8: "👀 <strong>Quan sát:</strong><br><br>Khi mắc hai bóng đèn giống nhau nối tiếp:<br>• Cả hai bóng đèn sáng <strong>yếu hơn</strong> so với khi mắc một bóng đèn duy nhất<br>• Nếu hai bóng đèn <strong>giống hệt nhau</strong> → chúng sáng với <strong>cường độ bằng nhau</strong><br><br>💡 <strong>Giải thích:</strong> Hiệu điện thế của nguồn được chia đều cho hai bóng đèn",
-            
             9: "📐 <strong>Sự thay đổi số chỉ:</strong><br><br><strong>Mạch nối tiếp:</strong><br>• Ampe kế: chỉ <strong>cùng một giá trị</strong> tại mọi điểm<br>• Vôn kế: chỉ hiệu điện thế <strong>giảm dần</strong> qua mỗi bóng đèn<br><br><strong>Mạch song song:</strong><br>• Ampe kế ở mạch chính: chỉ giá trị <strong>lớn hơn</strong> (tổng các dòng nhánh)<br>• Vôn kế: chỉ <strong>cùng một giá trị</strong> ở các nhánh song song",
-            
             10: "💡 <strong>Giải thích chi tiết:</strong><br><br>Khi mắc nối tiếp thêm bóng đèn:<br>1. Điện trở tổng mạch <strong>tăng lên</strong> (Rt = R₁ + R₂)<br>2. Theo định luật Ohm: <strong>I = U/Rt</strong><br>3. Khi Rt tăng mà U không đổi → <strong>I giảm</strong><br>4. Công suất tiêu thụ: <strong>P = I²R</strong><br>5. I giảm → P giảm mạnh (vì I bình phương)<br><br>→ Bóng đèn <strong>sáng yếu hơn</strong>",
-            
             11: "📊 <strong>Hiệu điện thế trong mạch nối tiếp:</strong><br><br><strong>Nếu hai bóng đèn giống hệt nhau:</strong><br>• Hiệu điện thế giữa hai đầu mỗi bóng đèn <strong>bằng nhau</strong><br>• Mỗi bóng nhận <strong>một nửa</strong> hiệu điện thế của nguồn<br>• Ví dụ: Nguồn 12V → mỗi bóng nhận 6V<br><br><strong>Ý nghĩa:</strong><br>Điều này cho thấy trong mạch nối tiếp, hiệu điện thế được <strong>chia tỉ lệ thuận</strong> với điện trở của từng phần tử",
-            
             12: "📝 <strong>Kết luận:</strong><br><br><strong>Mạch nối tiếp:</strong><br>• I như nhau tại mọi điểm: <strong>I = I₁ = I₂</strong><br>• U tổng bằng tổng các U: <strong>U = U₁ + U₂</strong><br>• R tổng bằng tổng các R: <strong>Rt = R₁ + R₂</strong><br><br><strong>Mạch song song:</strong><br>• U như nhau ở các nhánh: <strong>U = U₁ = U₂</strong><br>• I tổng bằng tổng các I: <strong>I = I₁ + I₂</strong><br>• <strong>1/Rt = 1/R₁ + 1/R₂</strong><br><br>✅ <strong>Định luật Ohm U = I.R luôn đúng</strong> trong cả hai loại mạch",
-            
             13: "⚖️ <strong>So sánh ưu nhược điểm:</strong><br><br><strong>Mạch nối tiếp:</strong><br>✅ <strong>Ưu điểm:</strong><br>• Đơn giản, dễ lắp đặt<br>• Tiết kiệm dây dẫn<br><br>❌ <strong>Nhược điểm:</strong><br>• Một thiết bị hỏng → toàn bộ mạch ngừng<br>• Các thiết bị không hoạt động độc lập<br>• Hiệu điện thế bị chia<br><br><strong>Mạch song song:</strong><br>✅ <strong>Ưu điểm:</strong><br>• Các thiết bị hoạt động độc lập<br>• Một thiết bị hỏng → các thiết bị khác vẫn hoạt động<br>• Hiệu điện thế ổn định ở các nhánh<br><br>❌ <strong>Nhược điểm:</strong><br>• Tốn nhiều dây dẫn<br>• Lắp đặt phức tạp hơn"
         };
 
-        // Initial suggestions (shown when chatbot opens)
         const initialSuggestions = [1, 3, 4, 5];
-        
-        // Fallback suggestions (shown when student asks outside questions)
-        const fallbackSuggestions = [1, 10, 11, 12, 13];
+        // ✅ Cập nhật: Khi HS hỏi ngoài danh sách, gợi ý TẤT CẢ 13 câu
+        const fallbackSuggestions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
-        // Toggle chatbot visibility
         function toggleChatbot() {
             const container = document.getElementById('chatbot-container');
             const toggleBtn = document.getElementById('chatbot-toggle');
-            
             if (container.style.display === 'flex') {
                 container.style.display = 'none';
                 toggleBtn.style.display = 'flex';
@@ -436,39 +331,24 @@
             }
         }
 
-        // Ask predefined question
         function askQuestion(questionNumber) {
             const question = predefinedQuestions[questionNumber];
             const answer = answers[questionNumber];
-            
-            // Add user message
             addMessage(question, 'user');
-            
-            // Show typing indicator
             showTyping();
-            
-            // Add AI response after delay
             setTimeout(() => {
                 hideTyping();
                 addMessage(answer, 'ai');
             }, 800);
         }
 
-        // Send custom message
         function sendMessage() {
             const input = document.getElementById('user-input');
             const message = input.value.trim();
-            
             if (message === '') return;
-            
-            // Add user message
             addMessage(message, 'user');
             input.value = '';
-            
-            // Show typing indicator
             showTyping();
-            
-            // Process message
             setTimeout(() => {
                 hideTyping();
                 const response = processMessage(message);
@@ -476,81 +356,61 @@
             }, 800);
         }
 
-        // Handle Enter key
         function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
+            if (event.key === 'Enter') sendMessage();
         }
 
-        // Process user message
         function processMessage(userMessage) {
-            // Check if message matches any predefined question
             let matchedNumber = null;
-            
             for (let [num, question] of Object.entries(predefinedQuestions)) {
                 const numInt = parseInt(num);
-                
-                // Check by number (e.g., "1", "1.", "Câu 1")
                 if (userMessage.includes(num + '.') || 
                     userMessage.includes('Câu ' + num) ||
                     userMessage.trim() === num) {
                     matchedNumber = numInt;
                     break;
                 }
-                
-                // Check by keywords from question (first 30 characters)
                 const questionKeywords = question.toLowerCase().substring(0, 30);
                 if (userMessage.toLowerCase().includes(questionKeywords)) {
                     matchedNumber = numInt;
                     break;
                 }
             }
-            
             if (matchedNumber) {
                 return answers[matchedNumber];
             } else {
-                // Return fallback message with suggestions
+                // ✅ Hiển thị đúng message thầy/cô yêu cầu + tất cả 13 câu hỏi
                 let suggestionHTML = '';
                 fallbackSuggestions.forEach(num => {
                     const question = predefinedQuestions[num];
-                    // Shorten question for display
-                    const shortQuestion = question.length > 50 ? question.substring(0, 50) + '...' : question;
+                    const shortQuestion = question.length > 40 ? question.substring(0, 40) + '...' : question;
                     suggestionHTML += `<button onclick="askQuestion(${num})">${num}. ${shortQuestion}</button>`;
                 });
-                
-                return `Cảm ơn em, câu hỏi rất hay! 👍<br><br>Tuy nhiên, để tập trung vào nội dung thí nghiệm, em hãy chọn một trong các câu hỏi gợi ý sau nhé:<br><br><div class="suggestion-buttons">${suggestionHTML}</div>`;
+                return `Cảm ơn em, câu hỏi rất hay. Em có thể đặt câu hỏi như:<br><br><div class="suggestion-buttons">${suggestionHTML}</div>`;
             }
         }
 
-        // Add message to chat
         function addMessage(content, sender) {
             const messagesDiv = document.getElementById('chatbot-messages');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}-message`;
             messageDiv.innerHTML = content;
             messagesDiv.appendChild(messageDiv);
-            
-            // Scroll to bottom
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
 
-        // Show typing indicator
         function showTyping() {
             document.getElementById('typing-indicator').style.display = 'block';
             const messagesDiv = document.getElementById('chatbot-messages');
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
 
-        // Hide typing indicator
         function hideTyping() {
             document.getElementById('typing-indicator').style.display = 'none';
         }
 
-        // Initialize
         window.onload = function() {
-            console.log('Virtual Experiment loaded successfully!');
-            console.log('Chatbot is ready to assist students.');
+            console.log('Virtual Experiment loaded! Chatbot ready.');
         };
     </script>
 </body>
